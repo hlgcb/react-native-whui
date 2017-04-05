@@ -8,7 +8,7 @@ import Theme from './../theme/default.js';
 class Button extends Component {
 	render(){
 		return (
-			<TouchableOpacity activeOpacity={0.5}>
+			<TouchableOpacity onPress={this.props.onPress} activeOpacity={0.5}>
 				<View style={styles.button}>
 					<Text style={styles.buttonText}>
 					{this.props.title}
@@ -21,7 +21,7 @@ class Button extends Component {
 
 // Props 类型检查
 Button.propTypes = {
-	title: PropTypes.string//.isRequired,
+	title: PropTypes.string.isRequired,
 	// 取值参考：https://facebook.github.io/react/docs/typechecking-with-proptypes.html
 	// PropTypes.any,
 	// PropTypes.object,
@@ -32,7 +32,7 @@ Button.propTypes = {
 }
 // 默认 props 值
 Button.defaultProps = {
-	title: "OK"
+	title: "确定"
 };
 
 const styles = StyleSheet.create({

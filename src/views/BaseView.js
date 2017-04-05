@@ -5,7 +5,7 @@ import { TouchableOpacity, View, Text } from 'react-native';
 
 class BaseView extends Component {
 	componentWillMount(){
-		console.log("BaseView componentWillMount");
+		// console.log("BaseView componentWillMount");
 	}
 }
 
