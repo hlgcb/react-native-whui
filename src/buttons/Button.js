@@ -1,10 +1,10 @@
 import { TouchableOpacity, View, Text } from 'react-native'; 
 
-class Button extends Componenent {
+class Button extends Component {
 	render(){
 		return (
 			<TouchableOpacity activeOpacity={1}>
-				按钮
+				{this.props.text}
 			</TouchableOpacity>
 		);
 	}
