@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, View, Text } from 'react-native';
+import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 
 class Button extends Component {
 	render(){
 		return (
 			<TouchableOpacity activeOpacity={1}>
-				<Text>
-				{this.props.text}
-				</Text>
+				<View style={style.button}>
+					<Text>
+					{this.props.text}
+					</Text>
+				</View>
 			</TouchableOpacity>
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+	button: {
+
+	},
+	buttonText: {
+		
+	}
+});
 
 module.exports = Button;
