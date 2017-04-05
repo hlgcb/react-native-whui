@@ -6,4 +6,4 @@ const Elements = {
 	Button
 };
 
-module.exports = Elements;
+export default Elements;
