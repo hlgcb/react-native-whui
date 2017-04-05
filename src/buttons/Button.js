@@ -1,4 +1,4 @@
-import { TouchableOpacity, View, Text } from 'react-native'; 
+import { TouchableOpacity, View, Text, Component } from 'react-native'; 
 
 class Button extends Component {
 	render(){
