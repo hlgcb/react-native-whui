@@ -54,6 +54,12 @@ const ThemeConfig = {
 	margin: {
 		cardBottom: size(20),	// 卡片底部的间距，20
 	},
+	borderRadius: 4,
+	//
+	window: {
+		width: width,
+		height: height
+	},
 	// 动态计算的尺寸
 	size: size,
 	fontSize: size,

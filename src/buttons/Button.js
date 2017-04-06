@@ -7,6 +7,7 @@
 	loading={true，是不是加载中，加载中不会触发 onPress 事件}
 	loadingText="加载中的文案，如果没文案，使用默认文案"
 	disabled={true，按钮不可用}
+	fixPosition="bottom"	// 底部悬浮
 	onPress={按钮点击事件}
 	backgroundColor="背景色"
 	color="文字颜色"
@@ -48,7 +49,8 @@ class Button extends Component {
 			buttonTextStyle.color = this.props.color;
 		}
 		return (
-			<TouchableOpacity onPress={this.pressHandler} activeOpacity={0.5}>
+			<TouchableOpacity onPress={this.pressHandler} activeOpacity={0.5}
+					style={ this.props.fixPosition == "bottom" ? styles.fixed : null }>
 				<View style={[styles.button, this.props.disabled ? styles.disabled : null, buttonStyle]}>
 					<Text style={[styles.buttonText, buttonTextStyle]}>
 					{this.props.loading ? this.props.loadingText : this.props.title}
@@ -66,6 +68,7 @@ Button.propTypes = {
 	loading: PropTypes.bool,
 	loadingText: PropTypes.string,
 	disabled: PropTypes.bool,
+	fixPosition: PropTypes.oneOf(['bottom']),
 	onPress: PropTypes.func,
 	// 取值参考：https://facebook.github.io/react/docs/typechecking-with-proptypes.html
 	// PropTypes.any,
@@ -82,13 +85,14 @@ Button.defaultProps = {
 	loading: false,
 	loadingText: "处理中，请稍候",
 	disabled: false,
+	fixPosition: null,
 	onPress: ()=>{}
 };
 
 const styles = StyleSheet.create({
 	button: {
 		backgroundColor: Theme.color.primaryColor,
-		borderRadius: 4,
+		borderRadius: Theme.borderRadius,
 		width: Theme.size(750),
 		height: Theme.size(88),
 		justifyContent: 'center',
@@ -103,6 +107,10 @@ const styles = StyleSheet.create({
 	},
 	disabled: {
 		backgroundColor: '#999'
+	},
+	fixed: {
+		position: 'absolute',
+		top: Theme.window.height - Theme.size(88) /* 扣掉导航栏的高度 */
 	}
 });
 
