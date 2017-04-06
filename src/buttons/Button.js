@@ -37,10 +37,10 @@ Button.defaultProps = {
 
 const styles = StyleSheet.create({
 	button: {
-		backgroundColor: Theme.color.mainBgColor,
+		backgroundColor: Theme.color.primaryColor,
 		borderRadius: 4,
-		width: Theme.size(710),
-		height: Theme.size(80),
+		width: Theme.size(750),
+		height: Theme.size(88),
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderWidth: Theme.borderWidth(1),
@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
 	},
 	buttonText: {
 		textAlign: 'center',
-		color: Theme.color.primaryColor
+		fontSize: 32,
+		color: Theme.color.primaryTextColor
 	}
 });
 

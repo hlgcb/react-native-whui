@@ -27,24 +27,32 @@ const ThemeConfig = {
 	// 皮肤的公共配置
 	// 颜色相关
 	color: {
-		mainBgColor: 'white',
-		primaryColor: 'red'
+		mainBgColor: '#f2f2f2',		// 主背景色
+		primaryColor: '#659AF0',	// 主色调，蓝色
+		sucessColor: '#78C559',		// 成功颜色
+		primaryTextColor: '#fff',	// 主色调区域的文字颜色，白色
+		mainTextColor: '#333',		// 主要文字颜色
+		secondTextColor: '#666',	// 次要文字颜色
+		tipsTextColor: '#999',		// tip文字颜色
+		requiredTextColor: '#DC4444',	// 必填项的 * 颜色
+		nickTextColor: '#F46C0E',	// 昵称文本颜色
+		linkTextColor: '#507DAF',	// 链接文本颜色
+		actionTextColor: '#508CEE',	// 操作文本颜色
+		splitLineColor: 'rgba(0, 0, 0, 0.2)',	// Tabbar 分隔线颜色	
 	},
 	fontSize: {
-
+		navigatorTitle: 34,		// 导航标题
+		titleText: 32,			// 导航操作文本，浮层标题，浮层按钮
+		actionText: 30,			// 
+		commonText: 28,			// 最常见的文本
+		emptyText: 26,			// 空文本
+		tipsText: 24			// 描述文本
 	},
 	padding: {
-
+		cardInner: size(30),	// 卡片内部
 	},
 	margin: {
-
-	},
-	// 按组件分类
-	card: {
-		title: {
-			color: '',
-			fontSize: 26
-		}
+		cardBottom: size(20),	// 卡片底部的间距，20
 	},
 	// 动态计算的尺寸
 	size: size,
