@@ -48,9 +48,22 @@ class Button extends Component {
 		} else if(typeof this.props.color != "undefined"){
 			buttonTextStyle.color = this.props.color;
 		}
+		if(typeof this.props.width != "undefined"){
+			buttonStyle.width = this.props.width;
+			if(this.props.width == "auto"){
+				buttonStyle.paddingHorizontal = Theme.size(20);
+			}
+		}
+		if(typeof this.props.height != "undefined"){
+			buttonStyle.height = this.props.height;
+		}
+		if(typeof this.props.spacing != "undefined"){
+			buttonStyle.marginRight = this.props.spacing;
+			buttonStyle.marginBottom = this.props.spacing;
+		}
 		return (
 			<TouchableOpacity onPress={this.pressHandler} activeOpacity={0.5}
-					style={ this.props.fixPosition == "bottom" ? styles.fixed : null }>
+					style={ [this.props.fixPosition == "bottom" ? styles.fixed : null] }>
 				<View style={[styles.button, this.props.disabled ? styles.disabled : null, buttonStyle]}>
 					<Text style={[styles.buttonText, buttonTextStyle]}>
 					{this.props.loading ? this.props.loadingText : this.props.title}
