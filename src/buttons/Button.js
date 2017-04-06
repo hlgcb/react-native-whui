@@ -10,7 +10,6 @@
 	onPress={按钮点击事件}
 	backgroundColor="背景色"
 	color="文字颜色"
-	highlightBackgroundColor="高亮背景色"
 	disabledBackgroundColor="禁用状态背景色"
 	disabledColor="禁用状态文字颜色"
 	 />
@@ -28,18 +27,31 @@ class Button extends Component {
 
 	pressHandler(){
 		// 按钮处于加载中和禁用状态，都不响应事件
-		if((this.props.loading !== true || this.props.disabled !== true)
+		if(this.props.loading !== true && this.props.disabled !== true
 				&& typeof this.props.onPress == "function"){
 			this.props.onPress();
 		}
 	}
 
 	render(){
+		// 自定义样式部分
+		let buttonStyle = {};
+		if(this.props.disabled && typeof this.props.disabledBackgroundColor != "undefined"){
+			buttonStyle.backgroundColor = this.props.disabledBackgroundColor;
+		} else if(typeof this.props.backgroundColor != "undefined"){
+			buttonStyle.backgroundColor = this.props.backgroundColor;
+		}
+		let buttonTextStyle = {};
+		if(this.props.disabled && typeof this.props.disabledColor != "undefined"){
+			buttonTextStyle.color = this.props.disabledColor;
+		} else if(typeof this.props.color != "undefined"){
+			buttonTextStyle.color = this.props.color;
+		}
 		return (
 			<TouchableOpacity onPress={this.pressHandler} activeOpacity={0.5}>
-				<View style={[styles.button, this.props.disabled ? styles.disabled : null]}>
-					<Text style={styles.buttonText}>
-					{this.props.title}
+				<View style={[styles.button, this.props.disabled ? styles.disabled : null, buttonStyle]}>
+					<Text style={[styles.buttonText, buttonTextStyle]}>
+					{this.props.loading ? this.props.loadingText : this.props.title}
 					</Text>
 				</View>
 			</TouchableOpacity>
