@@ -37,7 +37,7 @@ class Button extends Component {
 	render(){
 		return (
 			<TouchableOpacity onPress={this.pressHandler} activeOpacity={0.5}>
-				<View style={styles.button}>
+				<View style={[styles.button, this.props.disabled ? styles.disabled : null]}>
 					<Text style={styles.buttonText}>
 					{this.props.title}
 					</Text>
@@ -88,6 +88,9 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		fontSize: Theme.fontSize(32),
 		color: Theme.color.primaryTextColor
+	},
+	disabled: {
+		backgroundColor: '#999'
 	}
 });
 
