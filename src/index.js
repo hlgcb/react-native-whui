@@ -1,6 +1,6 @@
 import Button from './buttons/Button';
 import BaseView from './views/BaseView';
-import TabBar from './Tabbar/TabBar';
+import TabBar from './TabBar/Tabbar';
 
 const Elements = {
 	BaseView,
