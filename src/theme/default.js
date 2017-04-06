@@ -56,6 +56,7 @@ const ThemeConfig = {
 	},
 	// 动态计算的尺寸
 	size: size,
+	fontSize: size,
 	lineHeight: lineHeight,
 	borderWidth: border
 };

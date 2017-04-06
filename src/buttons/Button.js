@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 	},
 	buttonText: {
 		textAlign: 'center',
-		fontSize: 32,
+		fontSize: Theme.fontSize(32),
 		color: Theme.color.primaryTextColor
 	}
 });
