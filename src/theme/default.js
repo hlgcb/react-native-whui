@@ -39,7 +39,12 @@ const ThemeConfig = {
 		linkTextColor: '#507DAF',	// 链接文本颜色
 		actionTextColor: '#508CEE',	// 操作文本颜色
 		splitLineColor: 'rgba(0, 0, 0, 0.2)',	// Tabbar 分隔线颜色
-		white: 'white'
+		white: 'white',
+		//card相关颜色
+		card_borderColor:'#ccc',
+		card_backgroundColor:'#fff',
+		card_shadowColor:'#000',
+
 	},
 	fontSize: {
 		navigatorTitle: 34,		// 导航标题
