@@ -15,7 +15,6 @@ class FormTextInput extends Component {
 
 	constructor(props){
 		super(props);
-		this.pressHandler = this.pressHandler.bind(this);
 	}
 
 	render(){
@@ -56,12 +55,11 @@ FormTextInput.defaultProps = {
 
 const styles = StyleSheet.create({
 	input: {
-		backgroundColor: Theme.color.primaryColor,
+		backgroundColor: Theme.color.white,
 		borderRadius: Theme.borderRadius,
-		width: Theme.size(750),
+		width: '100%',
 		height: Theme.size(88),
-		justifyContent: 'center',
-		alignItems: 'center',
+		paddingHorizontal: Theme.size(10),
 		borderWidth: Theme.borderWidth(1),
 		borderColor: '#ccc'
 	},

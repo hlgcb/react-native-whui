@@ -38,7 +38,8 @@ const ThemeConfig = {
 		nickTextColor: '#F46C0E',	// 昵称文本颜色
 		linkTextColor: '#507DAF',	// 链接文本颜色
 		actionTextColor: '#508CEE',	// 操作文本颜色
-		splitLineColor: 'rgba(0, 0, 0, 0.2)',	// Tabbar 分隔线颜色	
+		splitLineColor: 'rgba(0, 0, 0, 0.2)',	// Tabbar 分隔线颜色
+		white: 'white'
 	},
 	fontSize: {
 		navigatorTitle: 34,		// 导航标题
