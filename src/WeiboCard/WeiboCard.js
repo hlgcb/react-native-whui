@@ -30,21 +30,23 @@ class WeiboCard extends Component {
 		return (
 			<View>
 				<Card>
-					<View>
+					<View style={styles.timeBox}>
 						<Image resizeMode="contain" style={styles.timeIcon} source={{uri:'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=300268425,1269595726&fm=58'}} />
 						<Text>03-28 10:20</Text>
 					</View>
 					<View>
 						<Text>#国庆七天旅程#妹子好美的地方啊，亲们，快来看看这里是哪里吧，我家后院的草原～～</Text>
-						<View>
-							<Image resizeMode="contain" style={styles.imageBox} source={{uri:'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=300268425,1269595726&fm=58'}} />
-							<Image resizeMode="contain" style={styles.imageBox} source={{uri:'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=300268425,1269595726&fm=58'}} />
-							<Image resizeMode="contain" style={styles.imageBox} source={{uri:'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=300268425,1269595726&fm=58'}} />
+						<View style={styles.imageBox}>
+							<Image resizeMode="contain" style={styles.image} source={{uri:'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=300268425,1269595726&fm=58'}} />
+							<Image resizeMode="contain" style={styles.image} source={{uri:'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=300268425,1269595726&fm=58'}} />
+							<Image resizeMode="contain" style={styles.image} source={{uri:'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=300268425,1269595726&fm=58'}} />
 						</View>
 					</View>
 					<View>
 						<Button
-							title="12345s"
+							title="立即投放"
+							backgroundColor="#FFF"
+							color="#508CEE"
 						 />
 					</View>
 				</Card>
@@ -82,13 +84,29 @@ WeiboCard.defaultProps = {
 };
 
 const styles = StyleSheet.create({
+	timeBox: {
+		backgroundColor: '#FFF',
+	},
 	timeIcon:{
 		width: 30,
 		height:30,
 	},
 	imageBox: {
-		width:100,
-		height:100,
+		flexDirection: 'row',
+		justifyContent: 'flex-start',
+		backgroundColor: '#C00',
+		paddingLeft: Theme.size(16),
+		marginBottom: Theme.size(30),
+		marginTop: Theme.size(20),
+	},
+	image: {
+		width: Theme.size(226),
+		height: Theme.size(226),
+		margin: Theme.size(5),
+	},
+	imageCenter: {
+		width: Theme.size(226),
+		height: Theme.size(226),
 	}
  });
 
