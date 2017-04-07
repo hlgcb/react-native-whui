@@ -3,12 +3,14 @@ import BaseView from './views/BaseView';
 import TabBar from './TabBar/Tabbar';
 import TextInput from './forms/TextInput';
 import Card from './Card/Card.js'
+import WeiboCard from './WeiboCard/WeiboCard'
 const Elements = {
 	BaseView,
 	Button,
 	TabBar,
 	TextInput,
-	Card
+	Card,
+	WeiboCard
 };
 
 module.exports = Elements;
