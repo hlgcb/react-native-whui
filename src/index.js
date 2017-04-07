@@ -5,6 +5,8 @@ import TextInput from './forms/TextInput';
 import TagsSelector from './forms/TagsSelector';
 import Card from './Card/Card.js'
 import Content from './Content/Content.js';
+import WeiboCard from './WeiboCard/WeiboCard'
+
 
 const Elements = {
 	BaseView,
@@ -13,7 +15,11 @@ const Elements = {
 	TextInput,
 	TagsSelector,
 	Card,
-	Content
+	Content,
+	Card,
+	WeiboCard,
+	TagsSelector
+
 };
 
 module.exports = Elements;
