@@ -1,3 +1,11 @@
+/*
+*   <Content>
+      do something
+    <Content>
+
+    标签直接引用,在有scrollview的页面里边引用
+*/
+
 'use strict'
 import {
 	StyleSheet,
