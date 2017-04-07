@@ -4,6 +4,7 @@ import TabBar from './TabBar/Tabbar';
 import TextInput from './forms/TextInput';
 import TagsSelector from './forms/TagsSelector';
 import Card from './Card/Card.js'
+import Content from './Content/Content.js';
 
 const Elements = {
 	BaseView,
@@ -11,7 +12,8 @@ const Elements = {
 	TabBar,
 	TextInput,
 	TagsSelector,
-	Card
+	Card,
+	Content
 };
 
 module.exports = Elements;
