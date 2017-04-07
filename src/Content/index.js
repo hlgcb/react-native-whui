@@ -4,8 +4,10 @@ import KeyboardAwareMixin from './lib/KeyboardAwareMixin'
 import KeyboardAwareScrollView from './lib/KeyboardAwareScrollView'
 import KeyboardAwareListView from './lib/KeyboardAwareListView'
 
-export {
+const KeyboardScrollView = {
   KeyboardAwareMixin,
   KeyboardAwareScrollView,
   KeyboardAwareListView
-}
+};
+
+module.exports = KeyboardScrollView;
