@@ -20,7 +20,7 @@ import {
   Platform
 } from 'react-native';
 import React, {Component} from 'react'
-import KeyboardAwareScrollView from './index.js'
+import {KeyboardAwareScrollView} from './index.js'
 import Theme from './../theme/default.js'
 
 export default class Content extends Component{
