@@ -14,6 +14,10 @@
 	borderRadius="按钮圆角"
 	disabledBackgroundColor="禁用状态背景色"
 	disabledColor="禁用状态文字颜色"
+	width={120|auto}
+	height={50|auto}
+	spacing={}
+	fontSize={Theme.size(26)}
 	 />
  */
 import React, { Component, PropTypes } from 'react';
@@ -40,8 +44,14 @@ class Button extends Component {
 		let buttonStyle = {};
 		if(this.props.disabled && typeof this.props.disabledBackgroundColor != "undefined"){
 			buttonStyle.backgroundColor = this.props.disabledBackgroundColor;
+			buttonStyle.borderColor = this.props.disabledBackgroundColor;
 		} else if(typeof this.props.backgroundColor != "undefined"){
 			buttonStyle.backgroundColor = this.props.backgroundColor;
+			buttonStyle.borderColor = this.props.backgroundColor;
+		}
+		if(typeof this.props.borderRadius != "undefined"){
+			console.log(this.props.borderRadius)
+			buttonStyle.borderRadius = this.props.borderRadius;
 		}
 		if(typeof this.props.borderRadius != "undefined"){
 			console.log(this.props.borderRadius)
@@ -65,6 +75,9 @@ class Button extends Component {
 		if(typeof this.props.spacing != "undefined"){
 			buttonStyle.marginRight = this.props.spacing;
 			buttonStyle.marginBottom = this.props.spacing;
+		}
+		if(typeof this.props.fontSize != "undefined"){
+			buttonTextStyle.fontSize = this.props.fontSize;
 		}
 		return (
 			<TouchableOpacity onPress={this.pressHandler} activeOpacity={0.5}
@@ -116,7 +129,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderWidth: Theme.borderWidth(1),
-		borderColor: '#ccc'
+		borderColor: Theme.color.primaryColor
 	},
 	buttonText: {
 		textAlign: 'center',

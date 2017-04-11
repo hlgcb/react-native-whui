@@ -46,13 +46,13 @@ const ThemeConfig = {
 		card_shadowColor:'#000',
 
 	},
-	fontSize: {
-		navigatorTitle: 34,		// 导航标题
-		titleText: 32,			// 导航操作文本，浮层标题，浮层按钮
-		actionText: 30,			// 
-		commonText: 28,			// 最常见的文本
-		emptyText: 26,			// 空文本
-		tipsText: 24			// 描述文本
+	fontsize: {
+		navigatorTitle: size(34),		// 导航标题
+		titleText: size(32),			// 导航操作文本，浮层标题，浮层按钮
+		actionText: size(30),			//
+		commonText: size(28),			// 最常见的文本
+		emptyText: size(26),			// 空文本
+		tipsText: size(24)			// 描述文本
 	},
 	padding: {
 		cardInner: size(30),	// 卡片内部

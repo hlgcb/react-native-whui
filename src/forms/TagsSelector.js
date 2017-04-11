@@ -7,6 +7,7 @@
 	showAll={true}			// 是否显示全选
 	onChange={选中后的回调，会把全部选择的结果扔回去}
 	tagWidth="auto|50"	// 标签是自适应宽度还是固定宽度
+	spacing={20}
 	 />
  */
 import React, { Component, PropTypes } from 'react';
@@ -77,8 +78,8 @@ class TagsSelector extends Component {
 				};
 			}
 			output.push(<Button key="all" title="全选"
-				width={itemWidth} height={Theme.size(60)}
-				spacing={10} {...style} onPress={()=>{this.selectAll();}} />);
+				width={itemWidth} height={Theme.size(50)}
+				spacing={this.props.spacing || Theme.size(10)} {...style} fontSize={Theme.fontSize(26)} onPress={()=>{this.selectAll();}} />);
 		}
 		for(let i = 0, count = tags.length; i < count; i ++ ){
 			let tag = tags[i];
@@ -92,8 +93,8 @@ class TagsSelector extends Component {
 				};
 			}
 			output.push(<Button key={tags[i].id} title={tags[i].text}
-				width={itemWidth} height={Theme.size(60)}
-				spacing={Theme.size(20)} {...style} onPress={()=>{this.selectTag(id);}} />);
+				width={itemWidth} height={Theme.size(50)}
+				spacing={this.props.spacing || Theme.size(10)} {...style} fontSize={Theme.fontSize(26)} onPress={()=>{this.selectTag(id);}} />);
 		}
 		return output;
 	}
@@ -138,6 +139,7 @@ const styles = StyleSheet.create({
 	tags: {
 		flexDirection: 'row',
 		flexWrap: 'wrap',
+		// backgroundColor: 'green'
 		// justifyContent: 'flex-start',//'space-around',
 		// alignItems: 'flex-start',//'stretch',
 		// paddingVertical: Theme.size(20),
