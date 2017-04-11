@@ -18,7 +18,8 @@
 	height={50|auto}
 	spacing={}
 	fontSize={Theme.size(26)}
-	 />
+	borderType="fontSame"	//边框颜色类型 fontSame：与按钮字色相同；！fontSame：与按钮背景色相同
+	/>
  */
 import React, { Component, PropTypes } from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
@@ -47,7 +48,6 @@ class Button extends Component {
 			buttonStyle.borderColor = this.props.disabledBackgroundColor;
 		} else if(typeof this.props.backgroundColor != "undefined"){
 			buttonStyle.backgroundColor = this.props.backgroundColor;
-			buttonStyle.borderColor = this.props.backgroundColor;
 		}
 		if(typeof this.props.borderRadius != "undefined"){
 			console.log(this.props.borderRadius)
@@ -79,6 +79,12 @@ class Button extends Component {
 		if(typeof this.props.fontSize != "undefined"){
 			buttonTextStyle.fontSize = this.props.fontSize;
 		}
+		if(typeof this.props.borderType != "undefined" && this.props.borderType == "fontSame"){
+			buttonStyle.borderColor = this.props.color;
+		}else{
+			buttonStyle.borderColor = this.props.backgroundColor;
+		}
+
 		return (
 			<TouchableOpacity onPress={this.pressHandler} activeOpacity={0.5}
 					style={ [this.props.fixPosition == "bottom" ? styles.fixed : null] }>
