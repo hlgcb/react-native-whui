@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
   cardStyle : {
       marginVertical: 5,
       marginHorizontal: 2,
-      flex: 1,
       borderWidth: (1/PixelRatio.getPixelSizeForLayoutSize(1)),
       borderRadius: 2,
       borderColor: Theme.color.card_borderColor,

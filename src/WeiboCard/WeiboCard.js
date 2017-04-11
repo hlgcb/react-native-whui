@@ -6,12 +6,6 @@
 	time:'',		//微博时间
 	timeIcon:'',	//时间图标
 	imgUrl: [],		//微博图片
-	btnTitle: "",	//按钮标题
-	btnIcon: null,	//按钮图标
-	btnLoading: false,
-	btnLoadingText: "处理中，请稍候",
-	btnDisabled: false,
-	btnOnPress: () => { }
 	 />
  */
 import React, { Component, PropTypes } from 'react';
@@ -40,32 +34,22 @@ class WeiboCard extends Component {
 		for(let i = 0;i<arr.length;i++){
 			imgArr.push(<Image key={i} resizeMode="contain" style={styles.image} source={{uri:arr[i]}} />)
 		}
-		console.log(imgArr)
 		return imgArr;
 	}
 
 	render() {
 		return (
 			<View>
-				<Card>
-					<View style={styles.timeBox}>
-						<Image resizeMode="contain" style={styles.timeIcon} source={require('../../../../app/images/weiboCard/timeIcon.png')} />
-						<Text style={styles.timeText}>{this.props.time}</Text>
+				<View style={styles.timeBox}>
+					<Image resizeMode="contain" style={styles.timeIcon} source={require('../../../../app/images/weiboCard/timeIcon.png')} />
+					<Text style={styles.timeText}>{this.props.time}</Text>
+				</View>
+				<View style={styles.detial}>
+					<Text style={styles.detialText}>{this.props.text}</Text>
+					<View style={styles.imageBox}>
+						{this.imgBox(this.props.imgUrl)}
 					</View>
-					<View style={styles.detial}>
-						<Text style={styles.detialText}>{this.props.text}</Text>
-						<View style={styles.imageBox}>
-							{this.imgBox(this.props.imgUrl)}
-						</View>
-					</View>
-					<View>
-						<Button
-							title={this.props.btnTitle}
-							backgroundColor={this.props.btnBackgroundColor}
-							color={this.props.btnColor}
-						 />
-					</View>
-				</Card>
+				</View>
 			</View>
 		);
 	}

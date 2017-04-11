@@ -11,6 +11,7 @@
 	onPress={按钮点击事件}
 	backgroundColor="背景色"
 	color="文字颜色"
+	borderRadius="按钮圆角"
 	disabledBackgroundColor="禁用状态背景色"
 	disabledColor="禁用状态文字颜色"
 	 />
@@ -41,6 +42,10 @@ class Button extends Component {
 			buttonStyle.backgroundColor = this.props.disabledBackgroundColor;
 		} else if(typeof this.props.backgroundColor != "undefined"){
 			buttonStyle.backgroundColor = this.props.backgroundColor;
+		}
+		if(typeof this.props.borderRadius != "undefined"){
+			console.log(this.props.borderRadius)
+			buttonStyle.borderRadius = this.props.borderRadius;
 		}
 		let buttonTextStyle = {};
 		if(this.props.disabled && typeof this.props.disabledColor != "undefined"){
