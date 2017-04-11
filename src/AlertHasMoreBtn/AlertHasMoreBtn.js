@@ -1,9 +1,42 @@
 /**
- * 微博单条卡片
+ * 多按钮弹窗
  import { WeiboCard } from 'react-native-whui';
  <AlertHasMoreBtn
-
+	title:"弹窗标题",
+	text:"弹窗内容",
+	showAlert: true, 弹窗开启
+	btnBackgroundColor:'按钮背景色',
+	btnColor:'按钮字体色',
+	btnBorderRadius:按钮圆角,
+	btnObj: [{
+		title:'按钮文案',
+		onPress:()=>{
+			按钮点击后的回调方法
+			！！！！！！！
+				务必添加
+				this.setState({
+					showAlert: false
+				})
+				用来关闭弹窗
+			！！！！！！！
+		}
+	}]
 	/>
+
+	弹框样式如下！！！！！
+	-----------------------------------------
+	|				  title				    |
+	|										|
+	|				  text				    |
+	|---------------------------------------|
+	|				  按钮一				  |
+	|---------------------------------------|
+	|				  按钮二				  |
+	|---------------------------------------|
+	|				  按钮三				  |
+	|---------------------------------------|
+	|				  .....				    |
+	|---------------------------------------|
  */
 import React, { Component, PropTypes } from 'react';
 import { TouchableOpacity, View, Text, StyleSheet, Image, Modal } from 'react-native';
