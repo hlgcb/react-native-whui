@@ -80,9 +80,9 @@ class Button extends Component {
 			buttonTextStyle.fontSize = this.props.fontSize;
 		}
 		if(typeof this.props.borderType != "undefined" && this.props.borderType == "fontSame"){
-			buttonStyle.borderColor = this.props.color;
+			buttonStyle.borderColor = typeof this.props.color != "undefined" ? this.props.color : Theme.color.primaryTextColor;
 		}else{
-			buttonStyle.borderColor = this.props.backgroundColor;
+			buttonStyle.borderColor = typeof this.props.backgroundColor != "undefined" ? this.props.backgroundColor : Theme.color.primaryColor;
 		}
 
 		return (
