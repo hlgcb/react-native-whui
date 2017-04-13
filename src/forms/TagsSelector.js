@@ -45,9 +45,11 @@ class TagsSelector extends Component {
 		// console.log("selectAll");
 		// 如果已经全选
 		if(this.state.selectedIds.length == this.props.tags.length){
+			let selectedIds = [];
 			this.setState({
-				selectedIds: []
+				selectedIds: selectedIds
 			});
+			this.props.onChange && this.props.onChange(selectedIds);
 		} else {
 			let tags = this.props.tags;
 			let output = [];
@@ -58,8 +60,9 @@ class TagsSelector extends Component {
 			this.setState({
 				selectedIds: output
 			});
+			this.props.onChange && this.props.onChange(output);
 		}
-		this.props.onChange && this.props.onChange(this.state.selectedIds);
+
 	}
 
 	getTags(){
@@ -78,7 +81,7 @@ class TagsSelector extends Component {
 				};
 			}
 			output.push(<Button key="all" title="全选"
-				width={itemWidth} height={Theme.size(50)}
+				width={itemWidth} height={Theme.size(50)} borderType="fontSame"
 				spacing={this.props.spacing || Theme.size(10)} {...style} fontSize={Theme.fontSize(26)} onPress={()=>{this.selectAll();}} />);
 		}
 		for(let i = 0, count = tags.length; i < count; i ++ ){
@@ -93,7 +96,7 @@ class TagsSelector extends Component {
 				};
 			}
 			output.push(<Button key={tags[i].id} title={tags[i].text}
-				width={itemWidth} height={Theme.size(50)}
+				width={itemWidth} height={Theme.size(50)} borderType="fontSame"
 				spacing={this.props.spacing || Theme.size(10)} {...style} fontSize={Theme.fontSize(26)} onPress={()=>{this.selectTag(id);}} />);
 		}
 		return output;

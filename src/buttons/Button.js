@@ -22,7 +22,7 @@
 	/>
  */
 import React, { Component, PropTypes } from 'react';
-import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, Text, StyleSheet, Platform } from 'react-native';
 import Theme from './../theme/default.js';
 
 class Button extends Component {
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
 	},
 	fixed: {
 		position: 'absolute',
-		top: Theme.window.height - Theme.size(88) /* 扣掉导航栏的高度 */
+		top: Theme.window.height - 44 - (Platform.OS == "android" ? 20 : 0) /* 扣掉导航栏的高度 */
 	}
 });
 

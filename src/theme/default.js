@@ -15,8 +15,8 @@ function size(size){
 	return size * width / 375;
 }
 // 为了兼容 Android，lineHeight 需要取整数
-function lineHeight(size){
-	return Math.round(size(size));
+function lineHeight(height){
+	return Math.round(size(height));
 }
 // 计算边框的尺寸，实现细线边框效果
 function border(size){
