@@ -17,30 +17,41 @@ class ChooseList extends Component {
 
 		this.state = {
 			dataArr: [{
-				Image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
-				name: 'name',
-				money: 45
+				profile_image_url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
+				screen_name: 'name',
+				verified_type: 1,
+				balance: 45
 			},
 			{
-				Image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
-				name: '电风扇',
-				money: 45
+				profile_image_url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
+				screen_name: '电风扇',
+				verified_type: 3,
+				balance: 45
 			},
 			{
-				Image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
-				name: '地方',
-				money: 45
+				profile_image_url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
+				screen_name: '地方',
+				verified_type: 3,
+				balance: 45
 			},
 			{
-				Image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
-				name: '泽德',
-				money: 45
+				profile_image_url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
+				screen_name: '泽德',
+				verified_type: 2,
+				balance: 45
 			},
 			{
-				Image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
-				name: 'fdg',
-				money: 454
-			}]
+				profile_image_url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
+				screen_name: 'fdg',
+				verified_type: 1,
+				balance: 454
+			}],
+			verifiedIco: [
+				require('../images/verified/ico_1.png'),
+				require('../images/verified/ico_2.png'),
+				require('../images/verified/ico_3.png'),
+				require('../images/verified/ico_4.png')
+			]
 		};
       var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       this.state = {
@@ -48,36 +59,32 @@ class ChooseList extends Component {
       };
 	}
 
-    // setWords(opts){
-    //     this.setState({
-    //         words: opts.text,//当前暂无可投放微博
-    //         type: opts.type || 0
-    //     })
-    // }
-
-	// eachHandler(dataArr){
-	// 	for(let i = 0;i<dataArr.length;i++){
-	// 		imgArr.push(<Image key={i} resizeMode="contain" style={styles.image} source={{uri:arr[i]}} />)
-	// 	}
-	// }
-
 	render() {
+
+		const verifiedIco = [
+			require('../images/verified/ico_1.png'),
+			require('../images/verified/ico_2.png'),
+			require('../images/verified/ico_3.png'),
+			require('../images/verified/ico_4.png')
+		];
+
 		return (
 			<View style={styles.main}>
 				<Text style={styles.lineText}>请选择投放账户</Text>
-
 		        <ListView
 		          dataSource={this.state.dataSource}
 		          renderRow={(itemData, sectionID, rowID) =><Card>
 							<View style={styles.item}>
 								<View style={styles.itemLeft}>
-									<Image style={styles.imageStyle} source={{uri:itemData.Image}} />
+									<Image style={styles.imageStyle} source={{uri:itemData.profile_image_url}} />
 
-									<View></View>
+									<View>
+										<Image style={styles.verified_ico} source={verifiedIco[itemData.verified_type]} />
+									</View>
 								</View>
 								<View style={styles.itemCenter}>
-									<Text style={styles.itemCenter_name}>{itemData.name}</Text>
-									<Text style={styles.itemCenter_money}>余额：{itemData.money}元</Text>
+									<Text style={styles.itemCenter_name}>{itemData.screen_name}</Text>
+									<Text style={styles.itemCenter_money}>余额：{itemData.balance}元</Text>
 								</View>
 
 								<TouchableHighlight onPress={()=>this.props.navigator.push({
@@ -155,10 +162,24 @@ const styles = StyleSheet.create({
 		paddingRight: Theme.size(15),
 		paddingBottom: Theme.size(15),
 		paddingLeft: Theme.size(15),
+		position: 'relative',
+
+
 	},
 	imageStyle: {
 		width: Theme.size(98),
 		height: Theme.size(98),
+		borderRadius: Theme.size(49),
+	},
+	verified_ico: {
+
+		width: Theme.size(28),
+		height: Theme.size(28),
+		position: 'absolute',
+		right: 0,
+		bottom: 0,
+
+
 	},
 	itemCenter: {
 		width: Theme.size(480),
@@ -195,3 +216,36 @@ const styles = StyleSheet.create({
  });
 
 export default ChooseList;
+
+
+
+
+
+// {
+//   "code": 0,
+//   "message": "",
+//   "data": [
+//     {
+//       "wb_user_id": "123",
+//       "profile_image_url": "url",
+//       "screen_name": "123",
+//       "balance": "123.00",
+//       "verified_type": "1",
+//       "is_biz_auth": "1",
+//       "biz_auth_url": "url",
+//       "is_ad_auth": "1",
+//       "ad_auth_url": "url"
+//     },
+//     {
+//       "wb_user_id": "124",
+//       "profile_image_url": "url",
+//       "screen_name": "123",
+//       "balance": "123.00",
+//       "verified_type": "1",
+//       "is_biz_auth": "1",
+//       "biz_auth_url": "url",
+//       "is_ad_auth": "1",
+//       "ad_auth_url": "url"
+//     }
+//   ]
+// }
