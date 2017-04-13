@@ -54,19 +54,10 @@ class ChooseList extends Component {
 			]
 		};
       var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-      this.state = {
-        dataSource: ds.cloneWithRows( this.state.dataArr ),
-      };
+      this.state.dataSource = ds.cloneWithRows( this.state.dataArr );
 	}
 
 	render() {
-
-		const verifiedIco = [
-			require('../images/verified/ico_1.png'),
-			require('../images/verified/ico_2.png'),
-			require('../images/verified/ico_3.png'),
-			require('../images/verified/ico_4.png')
-		];
 
 		return (
 			<View style={styles.main}>
@@ -79,7 +70,7 @@ class ChooseList extends Component {
 									<Image style={styles.imageStyle} source={{uri:itemData.profile_image_url}} />
 
 									<View>
-										<Image style={styles.verified_ico} source={verifiedIco[itemData.verified_type]} />
+										<Image style={styles.verified_ico} source={this.state.verifiedIco[itemData.verified_type]} />
 									</View>
 								</View>
 								<View style={styles.itemCenter}>
