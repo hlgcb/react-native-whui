@@ -10,6 +10,8 @@ import Search from './Search/Search';
 import ThemeConfig from './theme/default';
 import AlertHasMoreBtn from './AlertHasMoreBtn/AlertHasMoreBtn';
 import WeiboCard from './WeiboCard/WeiboCard';
+import AdvertisePlanCard from './AdvertisePlanCard/AdvertisePlanCard';
+import PageTopTabBar from './PageTopTabBar/PageTopTabBar';
 const Elements = {
 	BaseView,
 	Button,
@@ -22,7 +24,10 @@ const Elements = {
 	Search,
 	ThemeConfig,
 	AlertHasMoreBtn,
-	WeiboCard
+	AdvertisePlanCard,
+	WeiboCard,
+	PageTopTabBar
+	
 };
 
 module.exports = Elements;
