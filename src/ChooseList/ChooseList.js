@@ -1,0 +1,197 @@
+/**
+ * 选择网红
+ import { ChooseList } from 'react-native-whui';
+ <ChooseList
+	 />
+ */
+import React, { Component, PropTypes } from 'react';
+import { ListView, TouchableOpacity, View, Text, StyleSheet, Image, TouchableHighlight } from 'react-native';
+import Theme from './../theme/default.js';
+import Card from './../Card/Card.js';
+import Button from './../buttons/Button.js';
+
+class ChooseList extends Component {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			dataArr: [{
+				Image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
+				name: 'name',
+				money: 45
+			},
+			{
+				Image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
+				name: '电风扇',
+				money: 45
+			},
+			{
+				Image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
+				name: '地方',
+				money: 45
+			},
+			{
+				Image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
+				name: '泽德',
+				money: 45
+			},
+			{
+				Image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
+				name: 'fdg',
+				money: 454
+			}]
+		};
+      var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+      this.state = {
+        dataSource: ds.cloneWithRows( this.state.dataArr ),
+      };
+	}
+
+    // setWords(opts){
+    //     this.setState({
+    //         words: opts.text,//当前暂无可投放微博
+    //         type: opts.type || 0
+    //     })
+    // }
+
+	// eachHandler(dataArr){
+	// 	for(let i = 0;i<dataArr.length;i++){
+	// 		imgArr.push(<Image key={i} resizeMode="contain" style={styles.image} source={{uri:arr[i]}} />)
+	// 	}
+	// }
+
+	render() {
+		return (
+			<View style={styles.main}>
+				<Text style={styles.lineText}>请选择投放账户</Text>
+
+		        <ListView
+		          dataSource={this.state.dataSource}
+		          renderRow={(itemData, sectionID, rowID) =><Card>
+							<View style={styles.item}>
+								<View style={styles.itemLeft}>
+									<Image style={styles.imageStyle} source={{uri:itemData.Image}} />
+
+									<View></View>
+								</View>
+								<View style={styles.itemCenter}>
+									<Text style={styles.itemCenter_name}>{itemData.name}</Text>
+									<Text style={styles.itemCenter_money}>余额：{itemData.money}元</Text>
+								</View>
+
+								<TouchableHighlight onPress={()=>this.props.navigator.push({
+									component:this.props.routers.customPlan
+								})} >
+									<View style={styles.itemRight} >
+										<Image style={styles.itemRight_img} source={require('../images/ico_ad.png')} />
+										<Text style={styles.itemRight_text}>投广告</Text>
+									</View>
+								</TouchableHighlight>
+							</View>
+
+						</Card>}
+		        />
+
+
+		        <View style={styles.center}>
+		        	<Text style={styles.lineText}>添加账户请联系我们，微博@大COooO</Text>
+		        </View>
+			</View>
+		);
+	}
+}
+
+// Props 类型检查
+ChooseList.propTypes = {
+	title: PropTypes.string,
+	icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+	loading: PropTypes.bool,
+	loadingText: PropTypes.string,
+	disabled: PropTypes.bool,
+	onPress: PropTypes.func,
+	// 取值参考：https://facebook.github.io/react/docs/typechecking-with-proptypes.html
+	// PropTypes.any,
+	// PropTypes.object,
+	// PropTypes.bool,
+	// PropTypes.string,
+	// PropTypes.func,
+	// PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object])
+}
+// 默认 props 值
+ChooseList.defaultProps = {
+	dataArr: [{
+		Image: 44,
+		name: 'name',
+		money: 45
+	}]
+};
+
+const styles = StyleSheet.create({
+	main: {
+		backgroundColor: '#fbfbfb'
+	},
+	center:{
+		alignItems:'center',
+		justifyContent: 'center',
+	},
+	lineText: {
+        lineHeight: Theme.size(40),
+        fontSize:Theme.size(24),
+		paddingLeft: Theme.size(30),
+	},
+	item: {
+		backgroundColor: '#fff',
+        flexDirection: 'row',   // 水平排布
+		height: Theme.size(145),
+	},
+	itemLeft: {
+		width: Theme.size(128),
+		height: Theme.size(138),
+		flexDirection: 'row',
+		justifyContent: 'flex-start',
+		marginLeft: Theme.size(10),
+		paddingTop: Theme.size(25),
+		paddingRight: Theme.size(15),
+		paddingBottom: Theme.size(15),
+		paddingLeft: Theme.size(15),
+	},
+	imageStyle: {
+		width: Theme.size(98),
+		height: Theme.size(98),
+	},
+	itemCenter: {
+		width: Theme.size(480),
+		height: Theme.size(98),
+		marginTop: Theme.size(25),
+		marginLeft: Theme.size(10),
+	},
+	itemCenter_name: {
+        lineHeight: Theme.size(40),
+        fontSize: Theme.size(32),
+		color: '#FF8944'
+	},
+	itemCenter_money:{
+        lineHeight: Theme.size(40),
+        fontSize:Theme.size(24),
+		color: '#666'
+	},
+	itemRight: {
+		width: Theme.size(98),
+		height: Theme.size(98),
+		alignItems:'center',
+		justifyContent: 'center',
+		marginTop: Theme.size(30),
+	},
+	itemRight_img: {
+		width: Theme.size(42),
+		height: Theme.size(42),
+	},
+	itemRight_text: {
+		color: '#508CEE',
+        lineHeight: Theme.size(40),
+        fontSize:Theme.size(24),
+	},
+ });
+
+export default ChooseList;
