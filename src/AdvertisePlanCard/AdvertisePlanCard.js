@@ -7,15 +7,26 @@
 	 />
  */
 import React, { Component, PropTypes } from 'react';
-import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native';
+import { TouchableOpacity, View, Text, StyleSheet, Image, Alert } from 'react-native';
 import Theme from './../theme/default.js';
 import Button from './../buttons/Button.js';
+import MaterialDialog from './../MaterialDialog/MaterialDialog.js';
+import AdvertisePlanCardBtns from './../AdvertisePlanCardBtns/AdvertisePlanCardBtns.js';
+
+
 
 class AdvertisePlanCard extends Component {
 
 	constructor(props) {
 		super(props);
 		this.pressHandler = this.pressHandler.bind(this);
+		// this.btnStatus = this.btnStatus.bind(this);
+		this.state={
+			modalVisible: false,
+			Title: '',
+			Content: ''
+		}
+		
 	}
 
 	pressHandler() {
@@ -53,11 +64,11 @@ class AdvertisePlanCard extends Component {
 		return status;
 	}
 
-	btnStatus(statusId){
+	/*btnStatus(statusId){
 		//1：修改出价，2：开始投放，3：暂停投放，4：终止投放
 		let status;
 		let btnArray = [];
-		let btnText=["修改出价","开始投放","暂停投放","终止投放"]
+		let btnText=["修改出价","开始投放","暂停投放","终止投放"];
 		switch(statusId){
 			case 11: 
 				status = [3,4];
@@ -94,9 +105,10 @@ class AdvertisePlanCard extends Component {
 				break;
 			default:
 				status = [];
-		}
+		};
 		for(var i=0;i<status.length;i++){
-			btnArray.push(<View style={styles.singleBtnBox}>
+			let thisBtnId = status[i];
+			btnArray.push(<View key={i} style={styles.singleBtnBox}>
 						<Button 
 							key={i}
 							width={Theme.size(126)}
@@ -106,6 +118,9 @@ class AdvertisePlanCard extends Component {
 							backgroundColor="#FFF"
 							borderType="fontSame"
 							title={btnText[parseInt(status[i]) - 1]}
+							onPress={
+								()=>{this.btnPress(thisBtnId)}
+							}
 						/>
 					</View>);
 					
@@ -115,46 +130,90 @@ class AdvertisePlanCard extends Component {
 		return status.length == 0 ? null : (
 			<View key='btnBox' style={styles.btnBox}>{btnArray}</View>
 		);
-	}
+	}*/
 
-	btnPress(){
-
-	}
+	// btnPress(thisBtnId){
+	// 	console.log(thisBtnId)
+	// 	let alertTextBox = {
+	// 		'2':{
+	// 			title:'确定开启投放吗？',
+	// 			content: ''
+	// 		},
+	// 		'3':{
+	// 			title:'确定暂停投放吗？',
+	// 			content: ''
+	// 		},
+	// 		'4':{
+	// 			title:'确定终止投放？',
+	// 			content: '一旦终止投放，不可恢复'
+	// 		}
+	// 	}
+	// 	let alertText = {
+	// 		title: alertTextBox[thisBtnId].title,
+	// 		content: alertTextBox[thisBtnId].content,
+	// 	};
+	// 	Alert.alert(
+	// 		alertText.title,
+	// 		alertText.content,
+	// 		[
+	// 			{text: '取消', onPress: () => console.log('Foo Pressed!')},
+	// 			{text: '确定', onPress: () => console.log('Bar Pressed!')},
+	// 		]
+	// 	)
+	// 	// this.setState({
+	// 	// 	Title: alertText.title,
+	// 	// 	Content: alertText.content,
+	// 	// 	modalVisible: true
+	// 	// });
+	// 	/*return (<MaterialDialog 
+	// 		Title= {alert.title}
+	// 		Content= {alert.content}
+	// 		modalVisible= {this.state.modalVisible}
+	// 		/>)*/
+	// }
 
 	render() {
 		return (
-			<TouchableOpacity
-				onPress={this.pressHandler}
-				activeOpacity={0.5}
-				style={{backgroundColor: '#F2F2F2',width:'100%',}}
-			>
-				<View style={styles.content}>
-					<Text style={styles.contentTitle}>{this.props.planName}</Text>
-					<View style={styles.contentState}>
-						{this.cardStatus(this.props.status)}
-						<Image style={styles.stateImg} resizeMode="contain" source={require('../../../../app/images/AdvertisePlanCard/toRightIcon.png')} />
+			<View>
+				<TouchableOpacity
+					onPress={this.pressHandler}
+					activeOpacity={0.5}
+					style={{backgroundColor: '#F2F2F2',width:'100%',}}
+				>
+					<View style={styles.content}>
+						<Text style={styles.contentTitle}>{this.props.planName}</Text>
+						<View style={styles.contentState}>
+							{this.cardStatus(this.props.status)}
+							<Image style={styles.stateImg} resizeMode="contain" source={require('../../../../app/images/AdvertisePlanCard/toRightIcon.png')} />
+						</View>
 					</View>
-				</View>
-				<View style={styles.detial}>
-					<View style={styles.priceDetial}>
-						<Image style={styles.priceIcon} resizeMode="contain" source={require('../../../../app/images/AdvertisePlanCard/offerIconX.png')} />
-						<Text style={styles.priceText}>出价：{this.props.offer}&nbsp;元</Text>
+					<View style={styles.detial}>
+						<View style={styles.priceDetial}>
+							<Image style={styles.priceIcon} resizeMode="contain" source={require('../../../../app/images/AdvertisePlanCard/offerIconX.png')} />
+							<Text style={styles.priceText}>出价：{this.props.offer}&nbsp;元</Text>
+						</View>
+						<View style={styles.priceDetial}>
+							<Image style={styles.priceIcon} resizeMode="contain" source={require('../../../../app/images/AdvertisePlanCard/appearIconX.png')} />
+							<Text style={styles.priceText}>曝光量：{this.props.appear}</Text>
+						</View>
+						<View style={styles.priceDetial}>
+							<Image style={styles.priceIcon} resizeMode="contain" source={require('../../../../app/images/AdvertisePlanCard/expendNowIconX.png')} />
+							<Text style={styles.priceText}>今日消耗：{this.props.expendNow}&nbsp;元</Text>
+						</View>
+						<View style={styles.priceDetial}>
+							<Image style={styles.priceIcon} resizeMode="contain" source={require('../../../../app/images/AdvertisePlanCard/expendAllIconX.png')} />
+							<Text style={styles.priceText}>累计消耗：{this.props.expendAll}&nbsp;元</Text>
+						</View>
 					</View>
-					<View style={styles.priceDetial}>
-						<Image style={styles.priceIcon} resizeMode="contain" source={require('../../../../app/images/AdvertisePlanCard/appearIconX.png')} />
-						<Text style={styles.priceText}>曝光量：{this.props.appear}</Text>
-					</View>
-					<View style={styles.priceDetial}>
-						<Image style={styles.priceIcon} resizeMode="contain" source={require('../../../../app/images/AdvertisePlanCard/expendNowIconX.png')} />
-						<Text style={styles.priceText}>今日消耗：{this.props.expendNow}&nbsp;元</Text>
-					</View>
-					<View style={styles.priceDetial}>
-						<Image style={styles.priceIcon} resizeMode="contain" source={require('../../../../app/images/AdvertisePlanCard/expendAllIconX.png')} />
-						<Text style={styles.priceText}>累计消耗：{this.props.expendAll}&nbsp;元</Text>
-					</View>
-				</View>
-				{this.btnStatus(this.props.reason)}
-			</TouchableOpacity>
+				</TouchableOpacity>
+				<AdvertisePlanCardBtns reason={this.props.reason} />
+				{/*{this.btnStatus(this.props.reason)}*/}
+				{/*<MaterialDialog 
+					Title={this.state.Title}
+					Content={this.state.Content}
+					modalVisible={this.state.modalVisible}
+				/>*/}
+			</View>
 		);
 	}
 }
@@ -262,20 +321,20 @@ const styles = StyleSheet.create({
 		fontSize: Theme.size(26),
 		color: '#999',
 	},
-	btnBox: {
-		flexDirection: 'row',
-		justifyContent: 'flex-end',
-		alignItems: 'center',
-		height:Theme.size(90),
-		backgroundColor: '#FFF',
-		marginRight: Theme.size(6),
-		borderTopWidth: Theme.borderWidth(1),
-		borderTopColor: '#D9D9D9',
-		width: '100%'
-	},
-	singleBtnBox: {
-		marginRight: Theme.size(20),
-	}
+	// btnBox: {
+	// 	flexDirection: 'row',
+	// 	justifyContent: 'flex-end',
+	// 	alignItems: 'center',
+	// 	height:Theme.size(90),
+	// 	backgroundColor: '#FFF',
+	// 	marginRight: Theme.size(6),
+	// 	borderTopWidth: Theme.borderWidth(1),
+	// 	borderTopColor: '#D9D9D9',
+	// 	width: '100%'
+	// },
+	// singleBtnBox: {
+	// 	marginRight: Theme.size(20),
+	// }
 });
 
 export default AdvertisePlanCard;

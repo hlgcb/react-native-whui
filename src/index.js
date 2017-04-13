@@ -11,6 +11,7 @@ import ThemeConfig from './theme/default';
 import AlertHasMoreBtn from './AlertHasMoreBtn/AlertHasMoreBtn';
 import WeiboCard from './WeiboCard/WeiboCard';
 import AdvertisePlanCard from './AdvertisePlanCard/AdvertisePlanCard';
+import AdvertisePlanCardBtns from './AdvertisePlanCardBtns/AdvertisePlanCardBtns';
 import PageTopTabBar from './PageTopTabBar/PageTopTabBar';
 const Elements = {
 	BaseView,
@@ -26,7 +27,8 @@ const Elements = {
 	AlertHasMoreBtn,
 	AdvertisePlanCard,
 	WeiboCard,
-	PageTopTabBar
+	PageTopTabBar,
+	AdvertisePlanCardBtns
 	
 };
 

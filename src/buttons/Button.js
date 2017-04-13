@@ -50,11 +50,9 @@ class Button extends Component {
 			buttonStyle.backgroundColor = this.props.backgroundColor;
 		}
 		if(typeof this.props.borderRadius != "undefined"){
-			console.log(this.props.borderRadius)
 			buttonStyle.borderRadius = this.props.borderRadius;
 		}
 		if(typeof this.props.borderRadius != "undefined"){
-			console.log(this.props.borderRadius)
 			buttonStyle.borderRadius = this.props.borderRadius;
 		}
 		let buttonTextStyle = {};
