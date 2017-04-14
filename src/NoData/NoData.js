@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     },
     image_uri:{
         width: Theme.size(340),
-        height: Theme.size(296)
+        height: Theme.size(408)
     },
     center:{
         alignItems:'center',
