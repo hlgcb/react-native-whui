@@ -13,6 +13,7 @@ import WeiboCard from './WeiboCard/WeiboCard';
 import AdvertisePlanCard from './AdvertisePlanCard/AdvertisePlanCard';
 import AdvertisePlanCardBtns from './AdvertisePlanCardBtns/AdvertisePlanCardBtns';
 import PageTopTabBar from './PageTopTabBar/PageTopTabBar';
+import TopView from './topView/topView';
 const Elements = {
 	BaseView,
 	Button,
@@ -28,7 +29,8 @@ const Elements = {
 	AdvertisePlanCard,
 	WeiboCard,
 	PageTopTabBar,
-	AdvertisePlanCardBtns
+	AdvertisePlanCardBtns,
+	TopView
 	
 };
 
