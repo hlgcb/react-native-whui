@@ -206,7 +206,10 @@ class AdvertisePlanCard extends Component {
 						</View>
 					</View>
 				</TouchableOpacity>
-				<AdvertisePlanCardBtns reason={this.props.reason} />
+				<AdvertisePlanCardBtns 
+					reason={this.props.reason}
+					
+				/>
 				{/*{this.btnStatus(this.props.reason)}*/}
 				{/*<MaterialDialog 
 					Title={this.state.Title}
