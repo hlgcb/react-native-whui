@@ -8,7 +8,7 @@ import React, { Component, PropTypes } from 'react';
 import { ListView, TouchableOpacity, View, Text, StyleSheet, Image, TouchableHighlight } from 'react-native';
 import Theme from './../theme/default.js';
 import Card from './../Card/Card.js';
-import Button from './../buttons/Button.js';
+import AlertHasMoreBtn from './../AlertHasMoreBtn/AlertHasMoreBtn.js';
 
 class ChooseList extends Component {
 
@@ -57,6 +57,14 @@ class ChooseList extends Component {
       this.state.dataSource = ds.cloneWithRows( this.state.dataArr );
 	}
 
+
+
+   	static defaultProps = {
+		clickFn(){
+		}
+    }
+
+
 	render() {
 
 		return (
@@ -78,9 +86,12 @@ class ChooseList extends Component {
 									<Text style={styles.itemCenter_money}>余额：{itemData.balance}元</Text>
 								</View>
 
-								<TouchableHighlight onPress={()=>this.props.navigator.push({
-									component:this.props.routers.customPlan
-								})} >
+								<TouchableHighlight
+								  key={itemData.wb_user_id}
+						          underlayColor="rgb(210, 230,255)"  
+						          activeOpacity={0.5}
+								  onPress={this.props.clickFn}
+								>
 									<View style={styles.itemRight} >
 										<Image style={styles.itemRight_img} source={require('../images/ico_ad.png')} />
 										<Text style={styles.itemRight_text}>投广告</Text>
@@ -93,7 +104,7 @@ class ChooseList extends Component {
 
 
 		        <View style={styles.center}>
-		        	<Text style={styles.lineText}>添加账户请联系我们，微博@大COooO</Text>
+		        	<Text style={styles.lineText}>添加账户请联系我们，微博<Text style={{color: '#FF8944'}}>@大COooO</Text></Text>
 		        </View>
 			</View>
 		);
