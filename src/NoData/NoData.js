@@ -22,11 +22,6 @@ const styles = StyleSheet.create({
         width: Theme.size(340),
         height: Theme.size(408)
     },
-    center:{
-        alignItems:'center',
-        justifyContent: 'center',
-        marginTop: Theme.size(40)
-    },
     words: {
         lineHeight: Theme.size(42),
         fontSize: Theme.size(24)  
