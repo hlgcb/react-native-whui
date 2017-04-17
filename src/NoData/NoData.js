@@ -41,9 +41,9 @@ export default class NoData extends Component{
       this.state = {
         words: '暂无数据',
         img: [
-            require('../images/nodata/nodata_common_1.png'),
-            require('../images/nodata/nodata_common_2.png'),
-            require('../images/nodata/nodata_common_3.png'),
+            require('../images/Nodata/nodata_common_1.png'),
+            require('../images/Nodata/nodata_common_2.png'),
+            require('../images/Nodata/nodata_common_3.png'),
         ],
         type: 0
       };

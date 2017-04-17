@@ -15,6 +15,7 @@ import AdvertisePlanCardBtns from './AdvertisePlanCardBtns/AdvertisePlanCardBtns
 import PageTopTabBar from './PageTopTabBar/PageTopTabBar';
 import ChooseList from './ChooseList/ChooseList';
 import NoData from './NoData/NoData';
+import TopView from './topView/topView';
 const Elements = {
 	BaseView,
 	Button,
@@ -32,8 +33,8 @@ const Elements = {
 	PageTopTabBar,
 	AdvertisePlanCardBtns,
 	ChooseList,
-	NoData
-	
+	NoData,
+	TopView
 };
 
 module.exports = Elements;
