@@ -17,7 +17,7 @@ export default class Search extends Component {
   };
   static defaultProps = {
     LeftImage:require('../images/search.png'),
-    RightImage:require('../images/voice.png'),
+    
     text:'搜索火龙果商品/店铺',
     keyboardType:'web-search'
   }; 
@@ -31,6 +31,9 @@ export default class Search extends Component {
                         this.props.modle=='noIntent'?  
                         <TextInput 
                         underlineColorAndroid="transparent" 
+                        onSubmitEditing={this.props.submit}
+                        returnKeyType ='search'
+                        
                         keyboardType={this.props.keyboardType} 
                         placeholder={this.props.text}  
                         style={[styles.inputText,this.props.inputTextStyle]}
@@ -43,7 +46,7 @@ export default class Search extends Component {
                         {this.props.text}
                         </Text>
                     }
-                    <Image source={this.props.RightImage} style={[styles.voiceIcon,this.props.RightIconStyle]} onPress={this.props.RightButton}/>  
+                   
                 </View>  
                
             </View>  
