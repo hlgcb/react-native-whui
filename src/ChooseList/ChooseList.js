@@ -26,14 +26,6 @@ class ChooseList extends Component {
       this.state.dataSource = ds.cloneWithRows( this.props.dataArr );
 	}
 
-	clickFn(Data){
-		if( Data.need_auth ){
-			alert(Data.need_auth + Data.auth_url);
-		}else{
-			alert('ready');
-		}
-	}
-
 	componentWillReceiveProps(nextProps){;
 		this.setState({
 			dataSource: ds.cloneWithRows( nextProps.dataArr )
@@ -65,7 +57,7 @@ class ChooseList extends Component {
 						          underlayColor="rgb(210, 230,255)"  
 						          activeOpacity={0.5}
 								  onPress={
-									  ()=>{this.clickFn(itemData)}
+									  ()=>{this.props.clickFn(itemData)}
 								  }
 								>
 									<View style={styles.itemRight} >
@@ -104,6 +96,13 @@ ChooseList.propTypes = {
 }
 // 默认 props 值
 	ChooseList.defaultProps = {
+		clickFn(Data){
+			if( Data.need_auth ){
+				alert(Data.need_auth + Data.auth_url);
+			}else{
+				alert('ready');
+			}
+		},
 		dataArr: [{
 			profile_image_url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
 			screen_name: '史蒂夫',
