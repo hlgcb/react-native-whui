@@ -17,6 +17,7 @@ class ChooseList extends Component {
 		super(props);
 		this.state = {
 			verifiedIco: [
+				require('../images/verified/ico_0.png'),
 				require('../images/verified/ico_1.png'),
 				require('../images/verified/ico_2.png'),
 				require('../images/verified/ico_3.png'),
