@@ -16,7 +16,7 @@ var {width, height} = Dimensions.get('window');
   }
    static defaultProps = {
     Title: '这里是标题',
-    Content:'这里是内容',
+    
     disabled:true,
     cancelTouchMethod(){
       this.props.cancelTouchMethod
@@ -28,51 +28,6 @@ var {width, height} = Dimensions.get('window');
     }
  
 
- putTogether(aa){
-  var arrAlbum  = [] ;
-        var i =0;
-        for (var i in aa) {
-           console.log(i);
-           if(i==0&&aa.length>0){
-         arrAlbum.push(
-
-               <TouchableOpacity  key={i} activeOpacity={0.5} style={{flex:1}} onPress={this.props.ButtonFuc[i]}>
-                  <View style={styles.buttonLeft}>
-                  <Text style={styles.buttonText}>
-                   {aa[i]}
-                   </Text>
-                   </View>
-                  </TouchableOpacity> 
-              );  
-              }else if(i==aa.length-1&&aa.length>0){
-                  arrAlbum.push(
-
-               <TouchableOpacity  key={i} activeOpacity={0.5} style={{flex:1}} onPress={this.props.ButtonFuc[i]}>
-                  <View style={styles.buttonRight}>
-                  <Text style={styles.buttonText}>
-                   {aa[i]}
-                   </Text>
-                   </View>
-                  </TouchableOpacity> 
-              );  
-              }
-               else{
-                 arrAlbum.push(
-
-               <TouchableOpacity  key={i} activeOpacity={0.5} style={{flex:1}} onPress={this.props.ButtonFuc[i]}>
-                  <View style={styles.buttonLeft}>
-                  <Text style={styles.buttonText}>
-                   {aa[i]}
-                   </Text>
-                   </View>
-                  </TouchableOpacity> 
-              );  
-              }      
-    
-     }
-     console.log(arrAlbum);
-     return arrAlbum;
-    }
    
   
   render() {
@@ -110,44 +65,33 @@ var {width, height} = Dimensions.get('window');
                 >  
             <View  style = {[styles.aaa, this.props.modalBackgroundStyle]} >
             <View style = {[styles.innerContainer,this.props.innerContainerTransparentStyle]}>
-             {
-                havaView?
-                   <View>
-                     {this.props.View}
-                   </View>
-               :
                <View style={[styles.customView,this.props.customView]}>
-               {
-                     havaTopView?
-                     <View style={{flex:3}}> 
-                      {this.props.TopView}
-                      </View> 
-                     :
-                      <View style={{flex:3}}>
+                      <View>
                         <Text style={[styles.ContentStyle,this.props.textStyle]}>{this.props.Title}</Text>
                         <Text style={[styles.ContentStyle,this.props.ContentStyle]}>{this.props.Content}</Text>
                      </View> 
-                }
-                {
-                   havaBottomView?
-                      <View>
-                      {this.props.BottomView}
-                      </View> 
-
-                   :
+                
+               </View>
                    <View style={styles.bottomContainStyle}>
-                          
-
-                    {  
-                      this.putTogether(this.props.button)
-                    }  
-             </View>
-                }
+                  <TouchableOpacity activeOpacity={0.5} style={{flex:1}} onPress={this.props.leftButton} >
+                  <View style={styles.buttonLeft}>
+                  <Text style={[styles.buttonText,this.props.leftTextStyle]}>
+                   {this.props.leftText}
+                   </Text>
+                   </View>
+                  </TouchableOpacity> 
+                 <TouchableOpacity activeOpacity={0.5} style={{flex:1}} onPress={this.props.rightButton}>
+                  <View style={styles.buttoRight} >
+                  <Text style={[styles.buttonText,this.props.RightTextStyle]}>
+                  {this.props.RightText}
+                   </Text>
+                   </View>
+                  </TouchableOpacity> 
         
               </View>
                
         
-            }  
+            
          
             </View>
           </View>
@@ -159,56 +103,39 @@ var {width, height} = Dimensions.get('window');
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex:1,
-  },
-  dialogStyle:{
-      width:width-20,
-      height:300,
-      marginRight:20,
-      marginLeft:20,
-      alignItems:'center',
-      justifyContent:'center',
-      flexDirection:'column',
-  },
    bottomContainStyle: {
-    height:50,
-
     flex:1,
     flexDirection:'row',
     justifyContent:'center',
     alignItems:'center',
    
-   
+  },
+  buttoRight:{
+  flex:1,
+  borderTopWidth:1,
+  borderColor:'#ccc',
+  alignItems:'center',
+  justifyContent:'center',
+  },
+  buttonLeft:{
+      flex:1,
+      borderRightWidth:1,
+      borderColor:'#ccc',
+      borderTopWidth:1,
+      alignItems:'center',
+      justifyContent:'center',
   },
  aaa:{
     alignItems:'center',
     justifyContent:'center',
-    width:width,
-    flex:1,
-    height:1000,
+    position:'absolute',
+    right:0,
+    top:0,
+    bottom:0,
+    left:0,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
-  buttonLeft: {
-    backgroundColor: Theme.color.mainBgColor,
-    borderBottomLeftRadius:15,
-     flex:1,
-       alignItems:'center',
-    justifyContent:'center',
-     borderWidth: Theme.borderWidth(1),
-    borderBottomWidth:0,
-    borderColor: '#ccc'
-  },
-   buttonRight: {
-    backgroundColor: Theme.color.mainBgColor,
-    borderBottomRightRadius:15,
-     flex:1,
-       alignItems:'center',
-    justifyContent:'center',
-     borderWidth: Theme.borderWidth(1),
-    borderBottomWidth:0,
-    borderColor: '#ccc'
-  },
+ 
   buttonText: {
     textAlign: 'center',
     fontSize:20,
@@ -216,27 +143,21 @@ const styles = StyleSheet.create({
   },
   innerContainer:{
     backgroundColor: 'white', 
-    borderRadius:15,
+    borderRadius:15,  
+    width: Theme.size(540),
+    height:Theme.size(252),
   },
   customView:{
-                width: width-20,
-                height:300,
-                alignItems:'center',
-                justifyContent:'center',
-                flexDirection:'column',
-  },
-   textStyle:{
-        flex:1,
-        alignItems:"center",
-        justifyContent:"center",
-        marginTop:20,
-        fontSize:20,
-     },
+          flex:2,
+          alignItems:'center',
+          justifyContent:'center',
+          flexDirection:'column',          
+   },
+   
       ContentStyle:{
         flex:1,
         alignItems:"center",
         justifyContent:"center",
-        marginTop:20,
         fontSize:20,
      }
   
