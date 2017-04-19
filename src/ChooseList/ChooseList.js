@@ -39,6 +39,7 @@ class ChooseList extends Component {
 				<Text style={styles.lineText}>请选择投放账户</Text>
 		        <ListView
 		          dataSource={this.state.dataSource}
+			  enableEmptySections={true}
 		          renderRow={(itemData, sectionID, rowID) =><Card>
 							<View style={styles.item}>
 								<View style={styles.itemLeft}>
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	lineText: {
-        lineHeight: Theme.size(40),
+        lineHeight: Theme.lineHeight(40),
         fontSize:Theme.size(24),
 		paddingLeft: Theme.size(30),
 	},
@@ -167,12 +168,12 @@ const styles = StyleSheet.create({
 		marginLeft: Theme.size(10),
 	},
 	itemCenter_name: {
-        lineHeight: Theme.size(40),
+        lineHeight: Theme.lineHeight(40),
         fontSize: Theme.size(32),
 		color: '#FF8944'
 	},
 	itemCenter_money:{
-        lineHeight: Theme.size(40),
+        lineHeight: Theme.lineHeight(40),
         fontSize:Theme.size(24),
 		color: '#666'
 	},
@@ -189,7 +190,7 @@ const styles = StyleSheet.create({
 	},
 	itemRight_text: {
 		color: '#508CEE',
-        lineHeight: Theme.size(40),
+        lineHeight: Theme.lineHeight(40),
         fontSize:Theme.size(24),
 	},
  });
