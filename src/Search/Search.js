@@ -32,7 +32,10 @@ export default class Search extends Component {
                         <TextInput 
                         underlineColorAndroid="transparent" 
                         keyboardType={this.props.keyboardType} 
-                        placeholder={this.props.text}  
+                        placeholder={this.props.text}
+                        returnKeyType ='search'
+                        onSubmitEditing ={this.props.submit}
+                        onChangeText={this.props.onChangeText}
                         style={[styles.inputText,this.props.inputTextStyle]}
                         />
                         :
