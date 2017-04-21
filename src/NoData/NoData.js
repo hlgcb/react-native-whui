@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         height: Theme.size(408)
     },
     words: {
-        lineHeight: Theme.size(42),
+        lineHeight: Theme.lineHeight(42),
         fontSize: Theme.size(24)  
     }
 });
