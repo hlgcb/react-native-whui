@@ -20,7 +20,7 @@ export default class TabBar extends Component {
         defaultPage: 0,
         navFontSize: 14,
         navTextColor: 'black',
-        navTextColorSelected: '#FF9100',
+        navTextColorSelected: '#4C7AE7',
     };
 
     static propTypes = {
