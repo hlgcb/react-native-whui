@@ -36,7 +36,6 @@ class ChooseList extends Component {
 	render() {
 		return (
 			<View style={styles.main}>
-				<Text style={styles.lineText}>请选择投放账户</Text>
 		        <ListView
 		          dataSource={this.state.dataSource}
 			  enableEmptySections={true}
@@ -72,9 +71,7 @@ class ChooseList extends Component {
 						</Card>}
 		        />
 
-		        <View style={styles.center}>
-		        	<Text style={styles.lineText}>添加账户请联系我们，微博<Text style={{color: '#FF8944'}}>@大COooO</Text></Text>
-		        </View>
+
 			</View>
 		);
 	}
