@@ -145,7 +145,8 @@ const styles = StyleSheet.create({
 	},
 	fixed: {
 		position: 'absolute',
-		top: Theme.window.height - 44 - (Platform.OS == "android" ? 20 : 0) /* 扣掉导航栏的高度 */
+		bottom: 0,
+		// top: Theme.window.height - 44 - (Platform.OS == "android" ? 20 : 0) /* 扣掉导航栏的高度 */
 	}
 });
 
