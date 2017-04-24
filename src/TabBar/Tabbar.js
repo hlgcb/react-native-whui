@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     center: {
-        width: 56,
+        width: '50%',
         alignItems: 'center',
         justifyContent: 'center',
     },
