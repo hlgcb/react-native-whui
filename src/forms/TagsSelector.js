@@ -77,7 +77,7 @@ class TagsSelector extends Component {
 			} else {
 				style = {
 					backgroundColor: '#fff',
-					color: '#333'
+					color: '#999'
 				};
 			}
 			output.push(<Button key="all" title="全选"
@@ -92,7 +92,7 @@ class TagsSelector extends Component {
 			} else {
 				style = {
 					backgroundColor: '#fff',
-					color: '#333'
+					color: '#999'
 				};
 			}
 			output.push(<Button key={tags[i].id} title={tags[i].text}
