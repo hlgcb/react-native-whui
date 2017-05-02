@@ -24,7 +24,8 @@ class ChooseList extends Component {
 				require('../images/verified/ico_4.png')
 			]
 		};
-      this.state.dataSource = ds.cloneWithRows( this.props.dataArr );
+	  	this.state.dataSource = ds.cloneWithRows( this.props.dataArr );
+	  	this.renderRow = this.renderRow.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps){;
@@ -33,45 +34,50 @@ class ChooseList extends Component {
 		})
 	}
 
+	renderRow(itemData, sectionID, rowID){
+		return (
+		<View style={styles.card}>
+			<View style={styles.item}>
+				<View style={styles.itemLeft}>
+					<Image style={styles.imageStyle} source={{uri:itemData.profile_image_url}} />
+					<View>
+						{
+							+itemData.verified ?
+							<Image style={styles.verified_ico} source={this.state.verifiedIco[itemData.verified]} /> :
+							null
+						}
+					</View>
+				</View>
+				<View style={styles.itemCenter}>
+					<Text style={styles.itemCenter_name}>{itemData.screen_name}</Text>
+					{/*<Text style={styles.itemCenter_money}>余额：{itemData.balance}元</Text>*/}
+				</View>
+				<TouchableHighlight
+					key={itemData.wb_user_id}
+					underlayColor="rgb(210, 230,255)"  
+					activeOpacity={0.5}
+					onPress={
+						()=>{this.props.clickFn(itemData)}
+					}
+					>
+					<View style={styles.itemRight} >
+						<Image style={styles.itemRight_img} source={require('../images/ico_ad.png')} />
+						<Text style={styles.itemRight_text}>投广告</Text>
+					</View>
+				</TouchableHighlight>
+			</View>
+		</View>
+		);
+	}
+
 	render() {
 		return (
 			<View style={styles.main}>
-		        <ListView
-		          dataSource={this.state.dataSource}
-			  enableEmptySections={true}
-		          renderRow={(itemData, sectionID, rowID) =><Card>
-							<View style={styles.item}>
-								<View style={styles.itemLeft}>
-									<Image style={styles.imageStyle} source={{uri:itemData.profile_image_url}} />
-
-									<View>
-										<Image style={styles.verified_ico} source={this.state.verifiedIco[itemData.verified]} />
-									</View>
-								</View>
-								<View style={styles.itemCenter}>
-									<Text style={styles.itemCenter_name}>{itemData.screen_name}</Text>
-									{/*<Text style={styles.itemCenter_money}>余额：{itemData.balance}元</Text>*/}
-								</View>
-
-								<TouchableHighlight
-								  key={itemData.wb_user_id}
-						          underlayColor="rgb(210, 230,255)"  
-						          activeOpacity={0.5}
-								  onPress={
-									  ()=>{this.props.clickFn(itemData)}
-								  }
-								>
-									<View style={styles.itemRight} >
-										<Image style={styles.itemRight_img} source={require('../images/ico_ad.png')} />
-										<Text style={styles.itemRight_text}>投广告</Text>
-									</View>
-								</TouchableHighlight>
-							</View>
-
-						</Card>}
-		        />
-
-
+				<ListView
+					dataSource={this.state.dataSource}
+					enableEmptySections={true}
+					renderRow={this.renderRow}
+				/>
 			</View>
 		);
 	}
@@ -94,39 +100,36 @@ ChooseList.propTypes = {
 	// PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object])
 }
 // 默认 props 值
-	ChooseList.defaultProps = {
-		clickFn(Data){
-			if( Data.need_auth ){
-				alert(Data.need_auth + Data.auth_url);
-			}else{
-				alert('ready');
-			}
-		},
-		dataArr: [{
-			profile_image_url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491995363647&di=ecc43d7c670d7595b95556b1bcb3b131&imgtype=0&src=http%3A%2F%2Fwww.icosky.com%2Ficon%2Fpng%2FSystem%2FScrap%2FClient%25202.png',
-			screen_name: '史蒂夫',
-			verified: 1,
-			need_auth: 1,
-			auth_url: "http://30045.dev.91hong.com.cn/auth/auth/index?wb_user_id=5629525096&callback=http://30049.dev.91hong.com.cn/app_h5/auth/ad-auth-callback"
-		}]
-    }
+ChooseList.defaultProps = {
+	clickFn(Data){
+		if( Data.need_auth ){
+			alert(Data.need_auth + Data.auth_url);
+		}else{
+			alert('ready');
+		}
+	},
+	dataArr: []
+}
 
 const styles = StyleSheet.create({
 	main: {
-		backgroundColor: '#fbfbfb'
+		backgroundColor: '#f2f2f2'
 	},
 	center:{
 		alignItems:'center',
 		justifyContent: 'center',
 	},
 	lineText: {
-        lineHeight: Theme.lineHeight(40),
-        fontSize:Theme.size(24),
+		lineHeight: Theme.lineHeight(40),
+		fontSize:Theme.size(24),
 		paddingLeft: Theme.size(30),
+	},
+	card: {
+		marginBottom: Theme.size(20)
 	},
 	item: {
 		backgroundColor: '#fff',
-        flexDirection: 'row',   // 水平排布
+		flexDirection: 'row',   // 水平排布
 		height: Theme.size(145),
 	},
 	itemLeft: {
@@ -140,8 +143,6 @@ const styles = StyleSheet.create({
 		paddingBottom: Theme.size(15),
 		paddingLeft: Theme.size(15),
 		position: 'relative',
-
-
 	},
 	imageStyle: {
 		width: Theme.size(98),
@@ -149,14 +150,11 @@ const styles = StyleSheet.create({
 		borderRadius: Theme.size(49),
 	},
 	verified_ico: {
-
 		width: Theme.size(28),
 		height: Theme.size(28),
 		position: 'absolute',
 		right: 0,
 		bottom: 0,
-
-
 	},
 	itemCenter: {
 		width: Theme.size(480),
@@ -165,13 +163,13 @@ const styles = StyleSheet.create({
 		marginLeft: Theme.size(10),
 	},
 	itemCenter_name: {
-        lineHeight: Theme.lineHeight(40),
-        fontSize: Theme.size(32),
+		lineHeight: Theme.lineHeight(40),
+		fontSize: Theme.size(32),
 		color: '#FF8944'
 	},
 	itemCenter_money:{
-        lineHeight: Theme.lineHeight(40),
-        fontSize:Theme.size(24),
+		lineHeight: Theme.lineHeight(40),
+		fontSize:Theme.size(24),
 		color: '#666'
 	},
 	itemRight: {
@@ -187,8 +185,8 @@ const styles = StyleSheet.create({
 	},
 	itemRight_text: {
 		color: '#508CEE',
-        lineHeight: Theme.lineHeight(40),
-        fontSize:Theme.size(24),
+		lineHeight: Theme.lineHeight(40),
+		fontSize:Theme.size(24),
 	},
  });
 
