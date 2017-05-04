@@ -37,6 +37,18 @@
 	|---------------------------------------|
 	|				  .....				    |
 	|---------------------------------------|
+
+
+
+	如果按钮数量 == 2,即 btnObj.length == 2 ，弹窗会get变形技能
+	-----------------------------------------
+	|				  title				    |
+	|										|
+	|				  text				    |
+	|---------------------------------------|
+	|		按钮一		 |       按钮二		|
+	|---------------------------------------|
+	
  */
 import React, { Component, PropTypes } from 'react';
 import { TouchableOpacity, View, Text, StyleSheet, Image, Modal } from 'react-native';
@@ -49,6 +61,7 @@ class WeiboCard extends Component {
 	constructor(props) {
 		super(props);
 		this.pressHandler = this.pressHandler.bind(this);
+		this.alertTitleRenderFn = this.alertTitleRenderFn.bind(this);
 	}
 
 	pressHandler() {
@@ -65,20 +78,54 @@ class WeiboCard extends Component {
 		// 	onPress: ()=>{}
 		// }]
 		let btnArray = [];
-		for(var i in btnObj){
-			btnArray.push(
-				<Button
-					key={i}
-					width={Theme.size(540)}
-					borderRadius={typeof this.props.btnBorderRadius != 'undefind' ? this.props.btnBorderRadius : Theme.borderRadius}
-					backgroundColor={this.props.btnBackgroundColor}	
-					color={this.props.btnColor}
-					title={btnObj[i].title}
-					onPress={btnObj[i].onPress}
-				/>
-			)
+		if(btnObj.length == 2){
+			for(var i in btnObj){
+				btnArray.push(
+					<Button
+						key={i}
+						width={Theme.size(270)}
+						borderRadius={typeof this.props.btnBorderRadius != 'undefind' ? this.props.btnBorderRadius : Theme.borderRadius}
+						backgroundColor={this.props.btnBackgroundColor}	
+						color={this.props.btnColor}
+						title={btnObj[i].title}
+						onPress={btnObj[i].onPress}
+					/>
+				)
+			}
+			return (<View style={styles.btnBox}>
+						{btnArray}
+					</View>
+			);
+		}else{
+			for(var i in btnObj){
+				btnArray.push(
+					<Button
+						key={i}
+						width={Theme.size(540)}
+						borderRadius={typeof this.props.btnBorderRadius != 'undefind' ? this.props.btnBorderRadius : Theme.borderRadius}
+						backgroundColor={this.props.btnBackgroundColor}	
+						color={this.props.btnColor}
+						title={btnObj[i].title}
+						onPress={btnObj[i].onPress}
+					/>
+				)
+			}
+			return (<View>
+						{btnArray}
+					</View>
+			);
 		}
-		return btnArray;
+		
+	}
+
+	alertTitleRenderFn(){
+		if(!!this.props.title){
+			return (<View style={styles.alertTextTitle}>
+						<Text style={styles.h3}>{this.props.title}</Text>
+					</View>)
+		}else{
+			return null;
+		}
 	}
 
 	render() {
@@ -91,12 +138,12 @@ class WeiboCard extends Component {
 			>
 				<View style={styles.alertBox}
 				>
-					<View style={styles.alertContent}>
-						<View style={styles.alertTextTitle}>
-							<Text style={styles.h3}>{this.props.title}</Text>
-						</View>
-						<View style={styles.alertText}>
-							<Text>{this.props.text}</Text>
+					<View style={styles.alertContain}>
+						<View style={styles.alertContent}>
+							{this.alertTitleRenderFn}
+							<View style={styles.alertText}>
+								<Text style={styles.text}>{this.props.text}</Text>
+							</View>
 						</View>
 						{this.btnRenderFn(this.props.btnObj)}
 					</View>
@@ -128,7 +175,6 @@ WeiboCard.defaultProps = {
 	btnObj: [{
 		title:'涨粉-智能投放',
 		onPress:()=>{
-
 		}
 	}]
 };
@@ -137,30 +183,42 @@ const styles = StyleSheet.create({
 	alertBox: {
 		backgroundColor: 'rgba(0,0,0,0.5)', 
 		flex: 1,
-		flexDirection: 'row',
+		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-	alertContent: {
+	alertContain:{
 		backgroundColor: '#EEEFEE',
 		borderRadius: Theme.size(32),
 		width: Theme.size(540),
 		overflow: 'hidden',
 		opacity: 0.95,
 	},
+	alertContent: {
+		paddingTop: Theme.size(40),
+		paddingRight:Theme.size(30),
+		paddingBottom:Theme.size(40),
+		paddingLeft:Theme.size(30),
+	},
 	alertTextTitle: {
 		flexDirection: 'row',
 		justifyContent: 'center',
-		paddingTop: Theme.size(40),
 		paddingBottom: Theme.size(20),
 	},
 	alertText: {
 		flexDirection: 'row',
 		justifyContent: 'center',
-		paddingBottom: Theme.size(40),
+	},
+	text: {
+		lineHeight: Theme.lineHeight(34),
 	},
 	h3: {
 		fontSize: Theme.size(34),
+	},
+	btnBox: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
 	}
 });
 
