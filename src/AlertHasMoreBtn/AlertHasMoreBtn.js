@@ -8,6 +8,12 @@
 	btnBackgroundColor:'按钮背景色',
 	btnColor:'按钮字体色',
 	btnBorderRadius:按钮圆角,
+	titleJsx:'支持传入jsx对象作为title，改参数优先级大于title.
+								such as: 以文本输入框作为title，则传入如下内容
+								<TextInput style={{width: '100%', height: 50, backgroundColor: 'yellow'}} onChangeText={(value)=>{
+									console.log(value);
+								}}/>',
+	textJsx:'支持传入jsx对象作为text，改参数优先级大于title,类似titleJsx'
 	btnObj: [{
 		title:'按钮文案',
 		onPress:()=>{
@@ -53,7 +59,7 @@ import Theme from './../theme/default.js';
 import Card from './../Card/Card.js';
 import Button from './../buttons/Button.js';
 
-class WeiboCard extends Component {
+class AlertHasMoreBtn extends Component {
 
 	constructor(props) {
 		super(props);
@@ -113,9 +119,9 @@ class WeiboCard extends Component {
 	}
 
 	alertTitleRenderFn(){
-		if(!!this.props.TitleJsx){
+		if(!!this.props.titleJsx){
 			return (<View style={styles.alertText}>
-						{textJsx}
+						{this.props.titleJsx}
 					</View>)
 		}else if(!!this.props.title){
 			return (<View style={styles.alertTextTitle}>
@@ -129,7 +135,7 @@ class WeiboCard extends Component {
 	alertTextRenderFn(){
 		if(!!this.props.textJsx){
 			return (<View style={styles.alertText}>
-						{textJsx}
+						{this.props.textJsx}
 					</View>)
 		}else if(!!this.props.text){
 			return (<View style={styles.alertText}>
@@ -152,8 +158,8 @@ class WeiboCard extends Component {
 				>
 					<View style={styles.alertContain}>
 						<View style={styles.alertContent}>
-							{this.alertTitleRenderFn}
-							{this.alertTextRenderFn}
+							{this.alertTitleRenderFn()}
+							{this.alertTextRenderFn()}
 						</View>
 						{this.btnRenderFn(this.props.btnObj)}
 					</View>
@@ -164,7 +170,7 @@ class WeiboCard extends Component {
 }
 
 // // Props 类型检查
-// WeiboCard.propTypes = {
+// AlertHasMoreBtn.propTypes = {
 // 	showAlert: propTypes.showAlert,
 // 	// 取值参考：https://facebook.github.io/react/docs/typechecking-with-proptypes.html
 // 	// PropTypes.any,
@@ -175,7 +181,7 @@ class WeiboCard extends Component {
 // 	// PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object])
 // }
 // 默认 props 值
-WeiboCard.defaultProps = {
+AlertHasMoreBtn.defaultProps = {
 	title:"选择投放模式",
 	text:"涨粉目的不会对已有粉丝进行投放",
 	showAlert: true,
@@ -232,4 +238,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default WeiboCard;
+export default AlertHasMoreBtn;
