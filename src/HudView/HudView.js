@@ -1,4 +1,39 @@
 'use strict';
+/**
+
+import { ThemeConfig, HudView } from 'react-native-whui';
+
+<HudView ref="HudView"
+	isVisible={true}
+	isModal={false}
+	fadeDuration={300}
+	loadingDuration={1000}
+	hudText="加载中"
+	hudWidth={ThemeConfig.size(240)}
+	hudHeight={ThemeConfig.size(240)}
+	hudBorderRadius={ThemeConfig.size(40)}
+	maskBackgroundColor="rgba(0, 0, 0, 0.2)"
+	/>
+
+显示方法：this.refs.HudView.show()
+隐藏方法：this.refs.HudVIew.hide()
+
+参数说明：
+// isModal: PropTypes.bool,					// 包含在 Modal 里，默认 false
+// fadeDuration: PropTypes.number,			// fade 时长，默认 700 毫秒
+// loadingDuration: PropTypes.number,		// loading 动画转一圈的时长，默认 200 毫秒
+// hudText: "处理中",						  // 文案
+// hudWidth: PropTypes.number,				// 宽
+// hudHeight: PropTypes.number,				// 高
+// hudBorderRadius: PropTypes.number,		// 圆角大小
+// hudAdditionalStyles: PropTypes.object,	// 附加样式
+// hudBackgroundColor: PropTypes.string,	// 背景色
+// icon: PropTypes.string,					// 图标，当前就一个菊花
+// maskBackgroundColor: PropTypes.string,	// 蒙层颜色
+// hudContent: PropTypes.element			// 自定义内容，例如：hudContent={<Text></Text>}，有这个参数，默认的图标和文案都不再展示
+
+ */
+
 import React, { Component, PropTypes } from 'react';
 import {
 	StyleSheet,
