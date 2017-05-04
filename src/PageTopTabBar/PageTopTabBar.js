@@ -3,8 +3,21 @@
  import { PageTopTabBar } from 'react-native-whui';
  <PageTopTabBar
  	title="计划名称"
-	
+	leftTitle=“左侧tab名称”
+	rightTitle=“右侧tab名称”
+	onpress回调函数中有参数 表示当前选中的tab页签，1为左侧，2为右侧：
+	调用示例：
+		<PageTopTabBar 
+			onPress = {this.topTabBarPress}
+			leftTitle= '左侧tab名称'
+			rightTitle= '右侧tab名称'
+		/>
 	 />
+	 
+	 回调函数示例
+	 	topTabBarPress(thisTab) {
+			 console.log(thisTab)
+		}
  */
 import React, { Component, PropTypes } from 'react';
 import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native';
@@ -39,11 +52,11 @@ class PageTopTabBar extends Component {
 		return (
 			<View style={styles.tabBarBox}>
 				<TouchableOpacity style={styles.tabBar} onPress={this.pressHandlerLeft}>
-					<Text style={[styles.tabBarText, this.state.highLightState == 1 ? styles.textHighLight : '']}>正在投放</Text>
+					<Text style={[styles.tabBarText, this.state.highLightState == 1 ? styles.textHighLight : '']}>{this.props.leftTitle ? this.props.leftTitle : "正在投放"}</Text>
 					<View style={[styles.tabBarChosen, this.state.highLightState == 1 ? styles.bottomHighLight : '']}></View>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.tabBar} onPress={this.pressHandlerRight}>
-					<Text style={[styles.tabBarText, this.state.highLightState == 2 ? styles.textHighLight : '']}>所有投放</Text>
+					<Text style={[styles.tabBarText, this.state.highLightState == 2 ? styles.textHighLight : '']}>{this.props.rightTitle ? this.props.rightTitle : "所有投放"}</Text>
 					<View style={[styles.tabBarChosen, this.state.highLightState == 2 ? styles.bottomHighLight : '']}></View>
 				</TouchableOpacity>
 			</View>

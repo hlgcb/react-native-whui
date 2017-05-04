@@ -1,6 +1,6 @@
 /**
  * 多按钮弹窗
- import { WeiboCard } from 'react-native-whui';
+ import { AlertHasMoreBtn } from 'react-native-whui';
  <AlertHasMoreBtn
 	title:"弹窗标题",
 	text:"弹窗内容",
