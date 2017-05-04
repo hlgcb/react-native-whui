@@ -38,8 +38,6 @@
 	|				  .....				    |
 	|---------------------------------------|
 
-
-
 	如果按钮数量 == 2,即 btnObj.length == 2 ，弹窗会get变形技能
 	-----------------------------------------
 	|				  title				    |
@@ -48,7 +46,6 @@
 	|---------------------------------------|
 	|		按钮一		 |       按钮二		|
 	|---------------------------------------|
-	
  */
 import React, { Component, PropTypes } from 'react';
 import { TouchableOpacity, View, Text, StyleSheet, Image, Modal } from 'react-native';
@@ -62,6 +59,7 @@ class WeiboCard extends Component {
 		super(props);
 		this.pressHandler = this.pressHandler.bind(this);
 		this.alertTitleRenderFn = this.alertTitleRenderFn.bind(this);
+		this.alertTextRenderFn = this.alertTextRenderFn.bind(this);
 	}
 
 	pressHandler() {
@@ -73,10 +71,6 @@ class WeiboCard extends Component {
 	}
 
 	btnRenderFn(btnObj){
-		// btnObj = [{
-		// 	title: '123',
-		// 	onPress: ()=>{}
-		// }]
 		let btnArray = [];
 		if(btnObj.length == 2){
 			for(var i in btnObj){
@@ -119,9 +113,27 @@ class WeiboCard extends Component {
 	}
 
 	alertTitleRenderFn(){
-		if(!!this.props.title){
+		if(!!this.props.TitleJsx){
+			return (<View style={styles.alertText}>
+						{textJsx}
+					</View>)
+		}else if(!!this.props.title){
 			return (<View style={styles.alertTextTitle}>
 						<Text style={styles.h3}>{this.props.title}</Text>
+					</View>)
+		}else{
+			return null;
+		}
+	}
+
+	alertTextRenderFn(){
+		if(!!this.props.textJsx){
+			return (<View style={styles.alertText}>
+						{textJsx}
+					</View>)
+		}else if(!!this.props.text){
+			return (<View style={styles.alertText}>
+						<Text style={styles.text}>{this.props.text}</Text>
 					</View>)
 		}else{
 			return null;
@@ -141,9 +153,7 @@ class WeiboCard extends Component {
 					<View style={styles.alertContain}>
 						<View style={styles.alertContent}>
 							{this.alertTitleRenderFn}
-							<View style={styles.alertText}>
-								<Text style={styles.text}>{this.props.text}</Text>
-							</View>
+							{this.alertTextRenderFn}
 						</View>
 						{this.btnRenderFn(this.props.btnObj)}
 					</View>
