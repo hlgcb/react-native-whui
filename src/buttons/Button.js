@@ -87,9 +87,12 @@ class Button extends Component {
 			<TouchableOpacity onPress={this.pressHandler} activeOpacity={0.5}
 					style={ [this.props.fixPosition == "bottom" ? styles.fixed : null] }>
 				<View style={[styles.button, this.props.disabled ? styles.disabled : null, buttonStyle]}>
-					<Text style={[styles.buttonText, buttonTextStyle]}>
-					{this.props.loading ? this.props.loadingText : this.props.title}
-					</Text>
+					{
+						this.props.content != null ? this.props.content :
+						<Text style={[styles.buttonText, buttonTextStyle]}>
+						{this.props.loading ? this.props.loadingText : this.props.title}
+						</Text>
+					}
 				</View>
 			</TouchableOpacity>
 		);
