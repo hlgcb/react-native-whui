@@ -1,12 +1,12 @@
 'use strict'
 import {
-	StyleSheet,
-	View,
-	Image,
-	Text,
-	TouchableHighlight,
-	Dimensions,
-	Animated,
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TouchableHighlight,
+  Dimensions,
+  Animated,
   ListView,
   PixelRatio,
   Platform
@@ -47,16 +47,16 @@ export default class Card extends Component{
 const styles = StyleSheet.create({
   cardStyle : {
       marginVertical: 5,
-      marginHorizontal: 2,
+      marginHorizontal: 0,
       borderWidth: (1/PixelRatio.getPixelSizeForLayoutSize(1)),
       borderRadius: 2,
       borderColor: Theme.color.card_borderColor,
     //   flexWrap: 'wrap',
       backgroundColor: Theme.color.card_backgroundColor,
-      shadowColor: Theme.color.card_shadowColor,
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.1,
-      shadowRadius: 1.5,
+      // shadowColor: Theme.color.card_shadowColor,
+      // shadowOffset: { width: 0, height: 2 },
+      // shadowOpacity: 0.1,
+      // shadowRadius: 1.5,
       elevation: 3,
   }
 })
