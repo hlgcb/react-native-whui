@@ -11,7 +11,7 @@
 	 />
  */
 import React, { Component, PropTypes } from 'react';
-import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native';
+import { TouchableOpacity, View, Text, StyleSheet, Image , Platform} from 'react-native';
 import Theme from './../theme/default.js';
 import Card from './../Card/Card.js';
 import Button from './../buttons/Button.js';
@@ -110,8 +110,16 @@ const styles = StyleSheet.create({
 
 	},
 	timeIcon:{
-		width: Theme.size(30),
-		height: Theme.size(30),
+		...Platform.select({
+			ios:{
+				width: Theme.size(30),
+				height: Theme.size(30),
+			},
+			android:{
+				width: Theme.size(32),
+				height: Theme.size(32),
+			}
+		}),
 		marginRight: Theme.size(24),
 		marginTop:Theme.size(2)
 	},
