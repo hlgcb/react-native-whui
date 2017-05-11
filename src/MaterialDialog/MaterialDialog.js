@@ -59,7 +59,7 @@ var {width, height} = Dimensions.get('window');
           animatedType={"fade"}
           transparent={true}
           visible={this.props.modalVisible}
-          onRequestClose={() => {this.close}}
+          onRequestClose={() => {}}
           >
           <TouchableOpacity style={{flex:1}} activeOpacity={1} onPress={this.props.cancelTouchMethod} disabled={!this.props.setCanceledOnTouchOutside}//点击灰色区域消失  
                 >  

@@ -85,14 +85,14 @@ class AlertHasMoreBtn extends Component {
 						key={i}
 						width={Theme.size(270)}
 						borderRadius={typeof this.props.btnBorderRadius != 'undefind' ? this.props.btnBorderRadius : Theme.borderRadius}
-						backgroundColor={this.props.btnBackgroundColor}	
+						backgroundColor='rgba(0,0,0,0)'	
 						color={this.props.btnColor}
 						title={btnObj[i].title}
 						onPress={btnObj[i].onPress}
 					/>
 				)
 			}
-			return (<View style={styles.btnBox}>
+			return (<View style={[styles.btnBox, {backgroundColor: this.props.btnBackgroundColor || '#eeefee'}]}>
 						{btnArray}
 					</View>
 			);
@@ -103,14 +103,14 @@ class AlertHasMoreBtn extends Component {
 						key={i}
 						width={Theme.size(540)}
 						borderRadius={typeof this.props.btnBorderRadius != 'undefind' ? this.props.btnBorderRadius : Theme.borderRadius}
-						backgroundColor={this.props.btnBackgroundColor}	
+						backgroundColor='rgba(0,0,0,0)'	
 						color={this.props.btnColor}
 						title={btnObj[i].title}
 						onPress={btnObj[i].onPress}
 					/>
 				)
 			}
-			return (<View>
+			return (<View style={[styles.btnBox, {backgroundColor: this.props.btnBackgroundColor || '#eeefee'}]}>
 						{btnArray}
 					</View>
 			);
@@ -152,7 +152,7 @@ class AlertHasMoreBtn extends Component {
 				visible={this.props.showAlert}
 				animationType={"fade"}
 				transparent={true}
-				onRequestClose={this.close}
+				onRequestClose={()=>{}}
 			>
 				<View style={styles.alertBox}
 				>
@@ -235,6 +235,8 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
+		borderBottomLeftRadius: Theme.size(32),
+		borderBottomRightRadius: Theme.size(32),
 	}
 });
 
