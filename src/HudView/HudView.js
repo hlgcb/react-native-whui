@@ -232,6 +232,9 @@ const styles = StyleSheet.create({
 	text: {
 		color: 'white',
 		fontSize: Theme.fontSize(28),
-		marginTop: Theme.size(22)
+		marginTop: Theme.size(22),
+		paddingLeft: Theme.size(40),
+		paddingRight: Theme.size(40),
+		textAlign: 'center'
 	}
 });
