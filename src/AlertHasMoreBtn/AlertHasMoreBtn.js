@@ -227,6 +227,7 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		lineHeight: Theme.lineHeight(34),
+		fontSize: Theme.size(34),
 	},
 	h3: {
 		fontSize: Theme.size(34),

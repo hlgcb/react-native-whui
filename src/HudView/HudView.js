@@ -235,6 +235,7 @@ const styles = StyleSheet.create({
 		marginTop: Theme.size(22),
 		paddingLeft: Theme.size(40),
 		paddingRight: Theme.size(40),
-		textAlign: 'center'
+		textAlign: 'center',
+		lineHeight: Theme.size(50)
 	}
 });
