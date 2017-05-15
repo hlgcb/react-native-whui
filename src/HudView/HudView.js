@@ -53,7 +53,7 @@ export default class HudView extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			fadeDuration: props.fadeDuration,
+			fadeDuration: this.props.fadeDuration,
 			isVisible: false,
 			isRotating: false,
 			icon: null,
@@ -72,7 +72,17 @@ export default class HudView extends Component {
 
 	hide(){
 		this._fadeOut();
+		if(this.timer != null){
+			clearTimeout(this.timer);
+		}
 	}
+
+	componentWillUnmount() {
+		if(this.timer != null){
+			clearTimeout(this.timer);
+		}
+	}
+	
 	
 	
 	_fadeIn() {
@@ -123,7 +133,7 @@ export default class HudView extends Component {
 			this.increase = 0;
 		}
 		let that = this;
-		setTimeout(()=>{
+		this.timer = setTimeout(()=>{
 			that.setState({
 				rotateDeg: {
 					transform: [
@@ -236,6 +246,6 @@ const styles = StyleSheet.create({
 		paddingLeft: Theme.size(40),
 		paddingRight: Theme.size(40),
 		textAlign: 'center',
-		lineHeight: Theme.size(50)
+		lineHeight: Theme.lineHeight(44)
 	}
 });
