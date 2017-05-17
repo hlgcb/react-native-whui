@@ -6,12 +6,10 @@
 	time:'',		//微博时间
 	timeIcon:'',	//时间图标
 	imgUrl: [],		//微博图片
-	showTime: true  //是否显示时间
-	backgroundColor: '#F2F2F2' //背景颜色
 	 />
  */
 import React, { Component, PropTypes } from 'react';
-import { TouchableOpacity, View, Text, StyleSheet, Image , Platform} from 'react-native';
+import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native';
 import Theme from './../theme/default.js';
 import Card from './../Card/Card.js';
 import Button from './../buttons/Button.js';
@@ -39,36 +37,24 @@ class WeiboCard extends Component {
 		return imgArr;
 	}
 
-	weiboTime(){
-		if(this.props.showTime == true){
-			return (<View style={styles.timeBox}>
-						<Image resizeMode="contain" style={styles.timeIcon} source={require('../../../../app/images/weiboCard/timeIcon.png')} />
-						<Text style={styles.timeText}>{this.props.time}</Text>
-					</View>)
-		}
-		else{
-			return null;
-		}
-	}
-
-	weiboImage(){
-		if(this.props.imgUrl.length == 0){
-			return null;
-		}else{
-			return (<View style={[styles.imageBox,{backgroundColor: this.props.backgroundColor}]}>
-						{this.imgBox(this.props.imgUrl)}
-					</View>)
-		}
-	}
-
-
 	render() {
 		return (
 			<View>
-				{this.weiboTime()}
-				<View style={[styles.detial, {backgroundColor: this.props.backgroundColor}]}>
+				<View style={styles.timeBox}>
+					<View style={{flex:1}}>
+						<Text style={{fontSize:Theme.size(32)}}>{this.props.headerText}</Text>
+					</View>
+
+					<View style={{flex:1,flexDirection:'row'}}>
+						<Image resizeMode="contain" style={styles.timeIcon} source={require('../../../../app/images/weiboCard/timeIcon.png')} />
+						<Text style={styles.timeText}>{this.props.time}</Text>
+					</View>
+				</View>
+				<View style={styles.detial}>
 					<Text style={styles.detialText}>{this.props.text}</Text>
-					{this.weiboImage()}
+					<View style={styles.imageBox}>
+						{this.imgBox(this.props.imgUrl)}
+					</View>
 				</View>
 			</View>
 		);
@@ -97,30 +83,30 @@ WeiboCard.defaultProps = {
 	time:'03-26 10:20',
 	timeIcon:'../../../../app/images/weiboCard/timeIcon.png',
 	imgUrl: ['https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=300268425,1269595726&fm=58','https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=300268425,1269595726&fm=58','https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=300268425,1269595726&fm=58'],
+	btnTitle: "立即投放",
+	btnIcon: null,
+	btnLoading: false,
+	btnColor: '#508CEE',
+	btnBackgroundColor: '#FFF',
+	btnLoadingText: "处理中，请稍候",
+	btnDisabled: false,
+	btnOnPress: () => { }
 };
 
 const styles = StyleSheet.create({
 	timeBox: {
 		backgroundColor: '#FFF',
 		flexDirection: 'row',
-		justifyContent: 'flex-start',
-		alignItems: 'center',
+		justifyContent: 'space-between',
 		marginLeft: Theme.size(28),
 		paddingTop: Theme.size(30),
-		paddingBottom: Theme.size(10),
+		paddingBottom: Theme.size(30),
+		marginRight:Theme.size(20),
 
 	},
 	timeIcon:{
-		...Platform.select({
-			ios:{
-				width: Theme.size(30),
-				height: Theme.size(30),
-			},
-			android:{
-				width: Theme.size(32),
-				height: Theme.size(32),
-			}
-		}),
+		width: Theme.size(30),
+		height: Theme.size(30),
 		marginRight: Theme.size(24),
 		marginTop:Theme.size(2)
 	},
@@ -130,8 +116,7 @@ const styles = StyleSheet.create({
 	},
 	detial: {
 		backgroundColor: '#F7F7F7',
-		paddingBottom: Theme.size(20),
-		paddingTop: Theme.size(20)
+		paddingTop:Theme.size(30),
 	},
 	detialText: {
 		marginLeft: Theme.size(26),
@@ -143,7 +128,7 @@ const styles = StyleSheet.create({
 	imageBox: {
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
-		flexWrap: 'wrap',
+		flexWrap:'wrap',
 		paddingLeft: Theme.size(16),
 		marginBottom: Theme.size(30),
 		marginTop: Theme.size(20),
