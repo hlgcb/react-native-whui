@@ -15,6 +15,7 @@
 								}}/>',
 	textJsx:'支持传入jsx对象作为text，改参数优先级大于title,类似titleJsx'
 	btnObj: [{
+		color: '#999  按钮文字颜色，比上面的 btnColor 优先级更高',
 		title:'按钮文案',
 		onPress:()=>{
 			按钮点击后的回调方法
@@ -86,7 +87,7 @@ class AlertHasMoreBtn extends Component {
 						width={Theme.size(270)}
 						borderRadius={typeof this.props.btnBorderRadius != 'undefind' ? this.props.btnBorderRadius : Theme.borderRadius}
 						backgroundColor='rgba(0,0,0,0)'	
-						color={this.props.btnColor}
+						color={btnObj[i].color || this.props.btnColor}
 						title={btnObj[i].title}
 						onPress={btnObj[i].onPress}
 					/>
@@ -227,6 +228,8 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		lineHeight: Theme.lineHeight(34),
+		fontSize: Theme.size(32),
+		textAlign: 'center'
 	},
 	h3: {
 		fontSize: Theme.size(34),
