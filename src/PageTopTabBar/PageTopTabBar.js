@@ -9,6 +9,7 @@
 	调用示例：
 		<PageTopTabBar 
 			onPress = {this.topTabBarPress}
+			defaultTabIndex={1，默认高亮的 tab，从下标 1 开始}
 			leftTitle= '左侧tab名称'
 			rightTitle= '右侧tab名称'
 		/>
@@ -27,7 +28,7 @@ class PageTopTabBar extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { highLightState : 1 };  
+		this.state = { highLightState : this.props.defaultTabIndex || 1 };  
 		this.pressHandlerLeft = this.pressHandlerLeft.bind(this);
 		this.pressHandlerRight = this.pressHandlerRight.bind(this);
 	}
