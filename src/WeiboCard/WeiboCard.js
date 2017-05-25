@@ -2,14 +2,42 @@
  * 微博单条卡片
  import { WeiboCard } from 'react-native-whui';
  <WeiboCard
- 	text:'',		//微博文案
-	time:'',		//微博时间
-	timeIcon:'',	//时间图标
-	imgUrl: [],		//微博图片
-	showTime: true  //是否显示时间
-	backgroundColor: '#F2F2F2' //背景颜色
-
+ 	text='',		//微博文案
+	time='',		//微博时间
+	timeIcon='',	//时间图标
+	imgUrl= [],		//微博图片
+	showTime= {true}  //是否显示时间
+	backgroundColor= '#F2F2F2' //背景颜色
+	showState= {true} //顶部状态文字
+	statusContent = ''//状态文字
 	 />
+
+
+
+	样式如下 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+	-----------------------------------------
+	| --------				          		|
+	||timeICon|	weibotime		    status  |
+	| --------				        		|
+	|---------------------------------------|
+	|				 微博正文				 |
+	|										|
+	|   ---------	---------	---------	|
+	|	|		|	|		|	|		|	|
+	|	|		|	|		|  	|		|	|
+	|	|		|	|		|	|		|	|
+	|	---------	---------	---------	|
+	|   ---------	---------	---------	|
+	|	|		|	|		|	|		|	|
+	|	|		|	|		|  	|		|	|
+	|	|		|	|		|	|		|	|
+	|	---------	---------	---------	|
+	|   ---------	---------	---------	|
+	|	|		|	|		|	|		|	|
+	|	|		|	|		|  	|		|	|
+	|	|		|	|		|	|		|	|
+	|	---------	---------	---------	|
+	|---------------------------------------|
  */
 import React, { Component, PropTypes } from 'react';
 import { TouchableOpacity, View, Text, StyleSheet, Image , Platform} from 'react-native';
@@ -42,10 +70,25 @@ class WeiboCard extends Component {
 
 	weiboTime(){
 		if(this.props.showTime == true){
-			return (<View style={styles.timeBox}>
-						<Image resizeMode="contain" style={styles.timeIcon} source={require('../../../../app/images/weiboCard/timeIcon.png')} />
-						<Text style={styles.timeText}>{this.props.time}</Text>
+			if(this.props.showState == true){
+				return (<View style={styles.timeBox}>
+						<View style={styles.timeContent}>
+							<Image resizeMode="contain" style={styles.timeIcon} source={require('../../../../app/images/weiboCard/timeIcon.png')} />
+							<Text style={styles.timeText}>{this.props.time}</Text>
+						</View>
+						<View style={styles.timeState}>
+							<Text style={styles.timeStateText}>{this.props.statusContent}</Text>
+						</View>
 					</View>)
+			}else{
+				return (<View style={styles.timeBox}>
+						<View style={styles.timeContent}>
+							<Image resizeMode="contain" style={styles.timeIcon} source={require('../../../../app/images/weiboCard/timeIcon.png')} />
+							<Text style={styles.timeText}>{this.props.time}</Text>
+						</View>
+					</View>)
+			}
+			
 		}
 		else{
 			return null;
@@ -114,7 +157,7 @@ const styles = StyleSheet.create({
 	timeBox: {
 		backgroundColor: '#FFF',
 		flexDirection: 'row',
-		justifyContent: 'flex-start',
+		justifyContent: 'space-between',
 		alignItems: 'center',
 
 		// justifyContent: 'space-between',
@@ -142,6 +185,21 @@ const styles = StyleSheet.create({
 		marginRight: Theme.size(24),
 		marginTop:Theme.size(2)
 	},
+	timeContent:{
+		flexDirection: 'row',
+		justifyContent: 'flex-start',
+		flexWrap: 'nowrap',
+	},
+	timeState: {
+		flexDirection: 'row',
+		justifyContent: 'flex-end',
+		flexWrap: 'nowrap',
+		paddingRight: Theme.size(28),
+	},
+	timeStateText: {
+		color: '#333',
+		fontSize: Theme.size(32),
+	},
 	timeText: {
 		color: '#666',
 		fontSize: Theme.size(30),
@@ -165,7 +223,6 @@ const styles = StyleSheet.create({
 		justifyContent: 'flex-start',
 		flexWrap:'wrap',
 		paddingLeft: Theme.size(16),
-		marginBottom: Theme.size(30),
 		marginTop: Theme.size(20),
 	},
 	image: {
